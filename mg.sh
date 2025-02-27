@@ -21,5 +21,4 @@ do
     s4=$(rand)
     tot=$((s1+s2+s3+s4))
     printf "%03d\t%d\t%d\t%d\t%d\t%d\n" "$i" "$s1" "$s2" "$s3" "$s4" "$tot" >> $markdb
-    # echo $(rand)
 done
