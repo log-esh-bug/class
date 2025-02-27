@@ -1,6 +1,21 @@
 #!/bin/bash
 
 db=base
+id=
+#Initializing database!
+if [ ! -e $db ];then 
+	read -p "$db[Database] not exists.Want to create one?[y/n/q]" choice
+	case $choice in
+		y|Y)
+			echo -e "Id\tName\tAge\tContact" > $db
+			id=1
+			echo "Database($db) created successfully!"
+			;;
+		*)
+			exit
+			;;
+	esac
+fi
 
 display_help(){
 	cat <<- _eof_
@@ -29,6 +44,11 @@ display_help_interactive(){
 }
 
 add_record(){
+	if [ -z $id ];then
+		id=$(tail -n 1 ${db} | cut -f 1)
+		id=$((id+1))
+	fi
+
 	read -p "Enter the name	   	: " name
 	read -p "Enter the age	   	: " age
 	if [ $(echo $age | grep --count --word-regexp '[0-9]*') -eq 0 ];then
@@ -37,19 +57,38 @@ add_record(){
 	fi
 	read -p "Enter the contact 	: " contact
 
-	printf "%s\t%s\t%s\n" "$name" "$age" "$contact">> $db
+	printf "%03d\t%s\t%s\t%s\n" "$id" "$name" "$age" "$contact">> $db
+	id=$((id+1))
 	
 	echo "Student detail [ $name $age $contact ] added successfully!"
 }
 
 remove_record(){
-	read -p "Enter the student name to remove:" name
-	if [ $(grep -c --word-regexp $name $db) -gt 0 ];then
-		sed -i /${name}/d $db
-		echo "$name removed!"
-	else
-		echo "Record with name $name not found!"
-	fi
+    read -p "Enter the student name to remove: " name
+    ct=$(grep --count --word-regexp "$name" "$db")
+    echo "Matches found: $ct"
+
+    if ((ct == 0)); then
+        echo "Match not found!"
+        return
+    fi
+
+    if ((ct == 1)); then
+        sed -i "/${name}/d" "$db"
+        echo "$name record deleted successfully"
+        return
+    fi
+
+    read -p "Multiple matches found with $name! Do you want to delete all? [y/n] " ch
+
+    if [[ $ch == y ]]; then
+        sed -i "/${name}/d" "$db"
+        echo "All records with $name have been deleted."
+        return
+    fi
+
+	read -p "Enter the Id of the student record to be deleted : " d_id
+	sed -i "/${d_id}/d" "$db"
 }
 
 empty_database(){
