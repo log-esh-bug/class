@@ -7,7 +7,7 @@ if [ ! -e $db ];then
 	read -p "$db[Database] not exists.Want to create one?[y/n/q]" choice
 	case $choice in
 		y|Y)
-			echo -e "Id\tName\tAge\tContact" > $db
+			echo -e "Id\tName\tAge\tContact\n" > $db
 			id=1
 			echo "Database($db) created successfully!"
 			;;
@@ -17,11 +17,12 @@ if [ ! -e $db ];then
 	esac
 fi
 
+
 add_record(){
 	if [ -z $id ];then
-		echo "Finding id"
 		id=$(tail -n 1 ${db} | cut -f 1)
 		id=$((id+1))
+		echo "Found id $id"
 	fi
 	read -p "Enter the name	   	: " name
 	read -p "Enter the age	   	: " age

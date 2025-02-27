@@ -28,6 +28,7 @@ remove_record(){
 
 	read -p "Enter the Id of the student record to be deleted : " d_id
 	sed -i "/${d_id}/d" "$db"
+	echo "$name with $d_id deleted successfully!"
 }
 
 remove_record

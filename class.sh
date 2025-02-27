@@ -2,13 +2,14 @@
 
 db=base
 id=
-#Initializing database!
+
+#Initializing database if there is nothing!
 if [ ! -e $db ];then 
 	read -p "$db[Database] not exists.Want to create one?[y/n/q]" choice
 	case $choice in
 		y|Y)
-			echo -e "Id\tName\tAge\tContact" > $db
-			id=1
+			echo -e "Id\tName\tAge\tContact\n" > $db
+			id=1000
 			echo "Database($db) created successfully!"
 			;;
 		*)
@@ -20,12 +21,12 @@ fi
 display_help(){
 	cat <<- _eof_
 		Usage: $0 [Option]
+			-i (or) --interactive	Interactive mode
+			-a (or) --add		Add Record to Database[$db]
 			-r (or) --remove	To remove student From Database[$db]
+			-p (or) --printdb	Print the Database
 			-d (or) --destroy	To Destroy the Database[$db]
 			-h (or) --help		Display help
-			-p (or) --printdb	Print the Database
-			-a (or) --add		Add Record to Database[$db]
-			-i (or) --interactive	Interactive mode
 	_eof_
 }
 
@@ -33,12 +34,12 @@ display_help(){
 display_help_interactive(){
 	cat <<- _eof_
 		Help------------------------------------
+		a 	Add Record to Database[$db]
 		r	To remove student From Database[$db]
+		p 	Print the Database
 		d 	To Destroy the Database[$db]
 		h 	Display help
-		p 	Print the Database
-		a 	Add Record to Database[$db]
-		q	Ro quit the program
+		q	To quit the program
 		----------------------------------------
 	_eof_
 }
@@ -87,8 +88,9 @@ remove_record(){
         return
     fi
 
-	read -p "Enter the Id of the student record to be deleted : " d_id
+	read -p "Enter the Id of the student record to be deleted(XXX format) : " d_id
 	sed -i "/${d_id}/d" "$db"
+	echo "$name with $d_id deleted successfully!"
 }
 
 empty_database(){
@@ -96,7 +98,7 @@ empty_database(){
 	echo "Your choice $choice"
 	case $choice in
 		y | Y)
-			echo -e "Name\tAge\tContact" > $db
+			echo -e "Id\tName\tAge\tContact\n" > $db
 			echo "$db(DataBase) destroyed successfully!"
 			;;
 		q | Q)
