@@ -8,6 +8,21 @@ if [ ! -e $db ];then
 	id=1000
 fi
 
+fetch_lock_db(){
+	while [ -e ${db}.lock ];
+	do
+		echo "waiting!"
+		sleep 1		
+	done
+	touch ${db}.lock
+}
+
+drop_lock_db(){
+	if [ -e ${db}.lock ];then
+		rm ${db}.lock
+	fi
+}
+
 display_help(){
 	cat <<- _eof_
 		Usage: $0 [Option]
@@ -35,6 +50,7 @@ display_help_interactive(){
 }
 
 add_record(){
+	
 	if [ -z $id ];then
 		id=$(tail -n 1 ${db} | cut -f 1)
 		id=$((id+1))
@@ -48,14 +64,19 @@ add_record(){
 	fi
 	read -p "Enter the contact 	: " contact
 
+	fetch_lock_db
 	printf "%03d\t%s\t%s\t%s\n" "$id" "$name" "$age" "$contact">> $db
+	drop_lock_db
+
 	id=$((id+1))
 	
 	echo "Student detail [ $name $age $contact ] added successfully!"
+	
 }
 
 remove_record(){
     read -p "Enter the student name to remove: " name
+	fetch_lock_db
     ct=$(grep --count --word-regexp "$name" "$db")
     echo "Matches found: $ct"
 
@@ -81,6 +102,7 @@ remove_record(){
 	read -p "Enter the Id of the student record to be deleted(XXX format) : " d_id
 	sed -i "/${d_id}/d" "$db"
 	echo "$name with $d_id deleted successfully!"
+	drop_lock_db
 }
 
 empty_database(){
@@ -88,7 +110,7 @@ empty_database(){
 	echo "Your choice $choice"
 	case $choice in
 		y | Y)
-			echo -e "Id\tName\tAge\tContact\n" > $db
+			rm $db
 			echo "$db(DataBase) destroyed successfully!"
 			;;
 		q | Q)
