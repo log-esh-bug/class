@@ -1,21 +1,11 @@
 #!/bin/bash
-
-db=base
+parent_dir=/home/logesh-pt7689/script/class/
+db=${parent_dir}base
 id=
 
 #Initializing database if there is nothing!
 if [ ! -e $db ];then 
-	read -p "$db[Database] not exists.Want to create one?[y/n/q]" choice
-	case $choice in
-		y|Y)
-			echo -e "Id\tName\tAge\tContact\n" > $db
-			id=1000
-			echo "Database($db) created successfully!"
-			;;
-		*)
-			exit
-			;;
-	esac
+	id=1000
 fi
 
 display_help(){
@@ -114,6 +104,14 @@ print_db(){
 	cat $db	
 }
 
+start_exam(){
+	bash start_exam_helper
+}
+
+stop_exam(){
+	bash stop_exam_helper
+}
+
 interactive_mode(){
 	local choice=
 	display_help_interactive
@@ -173,6 +171,12 @@ do
 			;;
 		-a | --add)
 			add_record
+			;;
+		-ste | --start-exam)
+			start_exam
+			;;
+		-spe | --stop-exam)
+			start_exam
 			;;
 		*)
 			echo "$0: inavlid option -- '$1'"

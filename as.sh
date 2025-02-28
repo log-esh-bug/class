@@ -1,20 +1,13 @@
 #!/bin/bash
 
-db=base
+parent_dir=/home/logesh-pt7689/script/class/
+db=${parent_dir}base
 id=
 
+# echo "$db"
+
 if [ ! -e $db ];then 
-	read -p "$db[Database] not exists.Want to create one?[y/n/q]" choice
-	case $choice in
-		y|Y)
-			echo -e "Id\tName\tAge\tContact\n" > $db
-			id=1
-			echo "Database($db) created successfully!"
-			;;
-		*)
-			exit
-			;;
-	esac
+	id=1000
 fi
 
 
