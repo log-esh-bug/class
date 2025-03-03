@@ -1,7 +1,12 @@
 #!/bin/bash
 parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
+markdb=${parent_dir}Marksbase
+topbase=${parent_dir}toppers
 id=
+
+exam_freq=1
+topper_finding_freq=2
 
 #Initializing database if there is nothing!
 if [ ! -e $db ];then 
@@ -32,6 +37,10 @@ display_help(){
 			-p (or) --printdb	Print the Database
 			-d (or) --destroy	To Destroy the Database[$db]
 			-h (or) --help		Display help
+			-stex (or) --start-exam	Start Exam
+			-spex (or) --stop-exam	Stop Exam
+			-sttop (or) --start-topper	Start Topper Finding
+			-sptop (or) --stop-topper	Stop Topper Finding
 	_eof_
 }
 
@@ -45,6 +54,10 @@ display_help_interactive(){
 		d 	To Destroy the Database[$db]
 		h 	Display help
 		q	To quit the program
+		stex	Start Exam
+		spex	Stop Exam
+		sttop	Start Topper Finding
+		sptop	Stop Topper Finding
 		----------------------------------------
 	_eof_
 }
@@ -124,15 +137,32 @@ empty_database(){
 
 print_db(){
 	cat $db	
+	echo "---------------------------------------------------------"
+	cat $markdb
+	echo "---------------------------------------------------------"
+	cat $topbase
 }
 
-start_exam(){
-	bash start_exam_helper
+start_exam_helper(){
+	echo "Exam Started and will happen for every $exam_freq!"
+	${parent_dir}startexam.sh &
 }
 
-stop_exam(){
-	bash stop_exam_helper
+stop_exam_helper(){
+	kill -9 $(ps -ef | grep startexam | awk 'NR==1,NR==1 {print $2}')
+	echo "Exam Stopped!"
 }
+
+start_finding_topper_helper(){
+	echo "Finding topper process started and will happen for every $topper_finding_freq!"
+	${parent_dir}findtopper.sh &
+}
+
+stop_finding_topper_helper(){
+	kill -9 $(ps -ef | grep findtopper | awk 'NR==1,NR==1{print $2}')
+	echo "Finding topper process Stopped!"
+}
+
 
 interactive_mode(){
 	local choice=
@@ -155,6 +185,18 @@ interactive_mode(){
 				;;
 			a)
 				add_record
+				;;
+			stex)
+				start_exam_helper
+				;;
+			spex)
+				stop_exam_helper
+				;;
+			sttop)
+				start_finding_topper_helper
+				;;
+			sptop)
+				stop_finding_topper_helper
 				;;
 			q)
 				exit 0
@@ -194,11 +236,17 @@ do
 		-a | --add)
 			add_record
 			;;
-		-ste | --start-exam)
-			start_exam
+		-stex | --start-exam)
+			start_exam_helper
 			;;
-		-spe | --stop-exam)
-			start_exam
+		-spex | --stop-exam)
+			stop_exam_helper
+			;;
+		-sttop | --start-topper)
+			start_finding_topper_helper
+			;;
+		-sptop | --stop-topper)
+			stop_finding_topper_helper
 			;;
 		*)
 			echo "$0: inavlid option -- '$1'"

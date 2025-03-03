@@ -32,4 +32,8 @@ find_topper_helper(){
     echo "$(date) --> Toppers calculated and inserted to $topbase" >> $logfile
 }
 
-find_topper_helper
+while((1))
+do
+    find_topper_helper
+    sleep 5
+done

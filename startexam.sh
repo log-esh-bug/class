@@ -76,4 +76,9 @@ update_marks(){
     echo "$(date) --> Marks generated and inserted to $markdb" >> $logfile
 }
 
-update_marks
+while((1))
+do
+    update_marks
+    sleep 3
+    # echo "updating every 3 sec!"
+done
