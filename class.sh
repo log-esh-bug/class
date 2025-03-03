@@ -136,11 +136,25 @@ empty_database(){
 }
 
 print_db(){
-	cat $db	
-	echo "---------------------------------------------------------"
-	cat $markdb
-	echo "---------------------------------------------------------"
-	cat $topbase
+	read -p "Enter the database to print [db/markdb/topbase](space separated choices):" choice
+	for i in $choice
+	do
+		case $i in
+			db)
+				cat $db
+				;;
+			markdb)
+				cat $markdb
+				;;
+			topbase)
+				cat $topbase
+				;;
+			*)
+				echo "Invalid choice!"
+				;;
+		esac
+		echo "---------------------------------------------"
+	done
 }
 
 start_exam_helper(){
