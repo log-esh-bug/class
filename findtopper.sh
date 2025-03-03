@@ -7,18 +7,20 @@ logfile=${parent_dir}logfile
 
 sleep_time=2
 
-fetch_lock_markdb(){
-	while [ -e ${markdb}.lock ];
+trap cleanup EXIT
+
+fetch_lock(){
+	while [ -e ${1}.lock ];
 	do
-        # echo "waiting!"
+		echo "waiting!"
 		sleep 1		
 	done
-	touch ${markdb}.lock
+	touch ${1}.lock
 }
 
-drop_lock_markdb(){
-	if [ -e ${markdb}.lock ];then
-		rm ${markdb}.lock
+drop_lock(){
+	if [ -e ${1}.lock ];then
+		rm ${1}.lock
 	fi
 }
 
@@ -27,9 +29,9 @@ if [ ! -e $markdb ];then
 fi
 
 find_topper_helper(){
-    fetch_lock_markdb
+    fetch_lock $markdb
     sort -k 6nr $markdb | awk 'NR==1,NR==3 {print}' > $topbase
-    drop_lock_markdb
+    drop_lock $markdb
 
     echo "$(date) --> Toppers calculated and inserted to $topbase" >> $logfile
 }
@@ -39,3 +41,8 @@ do
     find_topper_helper
     sleep $sleep_time
 done
+
+
+cleanup(){
+	drop_lock $markdb
+}

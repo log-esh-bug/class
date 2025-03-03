@@ -8,6 +8,8 @@ temp=${parent_dir}temp
 
 sleep_time=1
 
+trap cleanup EXIT
+
 if [ ! -e $db ];then   
         echo "Database[$db] not exists! Quitting..."
 fi
@@ -16,42 +18,26 @@ rand(){
     echo $((RANDOM%30+70))
 }
 
-fetch_lock_db(){
-	while [ -e ${db}.lock ];
+fetch_lock(){
+	while [ -e ${1}.lock ];
 	do
-        echo "waiting! for db"
+		echo "waiting!"
 		sleep 1		
 	done
-	touch ${db}.lock
+	touch ${1}.lock
 }
 
-drop_lock_db(){
-	if [ -e ${db}.lock ];then
-		rm ${db}.lock
-	fi
-}
-
-fetch_lock_markdb(){
-	while [ -e ${markdb}.lock ];
-	do
-        echo "waiting! for markdb"
-		sleep 1		
-	done
-    # sleep 10
-	touch ${markdb}.lock
-}
-
-drop_lock_markdb(){
-	if [ -e ${markdb}.lock ];then
-		rm ${markdb}.lock
+drop_lock(){
+	if [ -e ${1}.lock ];then
+		rm ${1}.lock
 	fi
 }
 
 update_marks(){    
     
-    fetch_lock_db
+    fetch_lock $db
     ids=$(cat $db | cut -f 1 | awk '{print}')
-    drop_lock_db
+    drop_lock $db
 
     
     for i in $ids
@@ -66,9 +52,9 @@ update_marks(){
     
 
     # join -t$'\t' -j 1 $db $temp | cut -f 1,2,5,6,7,8,9 > t1
-    fetch_lock_markdb
+    fetch_lock $markdb
     mv $temp $markdb
-    drop_lock_markdb
+    drop_lock $markdb
 
     echo "$(date) --> Marks generated and inserted to $markdb" >> $logfile
 }
@@ -78,3 +64,9 @@ do
     update_marks
     sleep $sleep_time
 done
+
+cleanup(){
+    drop_lock $db
+    drop_lock $markdb
+    drop_lock $temp
+}

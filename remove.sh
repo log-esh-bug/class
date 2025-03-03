@@ -2,29 +2,31 @@
 parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
 
-fetch_lock_db(){
-	while [ -e ${db}.lock ];
+#Usage: fetch_lock dbname
+fetch_lock(){
+	# echo "$1 lock created"
+	while [ -e ${1}.lock ];
 	do
 		echo "waiting!"
 		sleep 1		
 	done
-	touch ${db}.lock
+	touch ${1}.lock
 }
-
-drop_lock_db(){
-	if [ -e ${db}.lock ];then
-		rm ${db}.lock
+#usage drop_lock dbname
+drop_lock(){
+	if [ -e ${1}.lock ];then
+		rm ${1}.lock
 	fi
 }
 
-trap drop_lock_db EXIT
+trap cleanup EXIT
 
 remove_record_by_name(){
     read -p "Enter the name: " name
-	fetch_lock_db
+	fetch_lock $db
     matches=$(cat $db | cut --fields=2 | grep -n --word-regexp "$name")
     if [ -z "$matches" ]; then
-        drop_lock_db
+        drop_lock $db
         echo "Match not found!"
         return
     fi
@@ -32,22 +34,22 @@ remove_record_by_name(){
     echo "Matches found: $ct "
 
     if ((ct == 0)); then
-        drop_lock_db
+        drop_lock $db
         echo "Match not found!"
         return
     fi
 
     if ((ct == 1)); then
-        drop_lock_db
+        drop_lock $db
         echo "Record to be deleted:"
         line=$(fetch_details n $name)
         sed -n ${line}p $db
         read -p "Do you want to continue?[y/n]:" ch
         case $ch in
             y|Y)
-                fetch_lock_db
+                fetch_lock $db
                 sed -i "/${name}/d" "$db"
-                drop_lock_db
+                drop_lock $db
                 echo "$name record deleted successfully"
                 ;;
             n|N)
@@ -62,7 +64,7 @@ remove_record_by_name(){
     if [[ $ch == y ]]; then
         sed -i "/${name}/d" "$db"
         echo "All records with $name have been deleted."
-        drop_lock_db
+        drop_lock $db
         return
     fi
 
@@ -74,7 +76,7 @@ remove_record_by_name(){
     done
 
     read -p "Enter the Id of the student record you want to delete(XXX format) : " d_id
-    drop_lock_db
+    drop_lock $db
 
     d_line=$(fetch_details i $d_id)
 
@@ -82,10 +84,10 @@ remove_record_by_name(){
         echo "No record found with id $d_id"
         return
     fi
-    
-    fetch_lock_db
+
+    fetch_lock $db
     sed -i "${d_line}d" "$db"
-    drop_lock_db
+    drop_lock $db
 
 	echo "$name with $d_id deleted successfully!"
     
@@ -105,13 +107,15 @@ fetch_details(){
             return
             ;;
     esac
-    fetch_lock_db
+    fetch_lock $db
     line=$(cat $db| cut --fields=${field} |grep --line-number $2|cut -f 1 -d ":")
-    drop_lock_db
+    drop_lock $db
     echo $line
 }
 
 remove_record_by_name
 
-
+cleanup(){
+    drop_lock $db
+}
 
