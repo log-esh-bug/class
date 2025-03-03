@@ -5,7 +5,7 @@ markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
 logfile=${parent_dir}logfile
 
-sleep_time=10
+sleep_time=2
 
 fetch_lock_markdb(){
 	while [ -e ${markdb}.lock ];
@@ -28,7 +28,7 @@ fi
 
 find_topper_helper(){
     fetch_lock_markdb
-    sort -k 7nr $markdb | awk 'NR==1,NR==3 {print}' > $topbase
+    sort -k 6nr $markdb | awk 'NR==1,NR==3 {print}' > $topbase
     drop_lock_markdb
 
     echo "$(date) --> Toppers calculated and inserted to $topbase" >> $logfile
