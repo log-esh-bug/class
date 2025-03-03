@@ -192,6 +192,25 @@ remove_record_by_name(){
     
 }
 
+find_record(){
+	read -p "FInd by Name/Id[n/i]" choice
+	case $choice in
+		n|name)
+			read -p "Enter the name: " name
+			line=$(fetch_details n $name)
+			print_record_by_line $line
+			;;
+		i|id)
+			read -p "Enter the id: " id
+			line=$(fetch_details i $id)
+			print_record_by_line $line
+			;;
+		*)
+			echo "Invalid choice!"
+			;;
+	esac
+}
+
 empty_database(){
 	read -p "Are you sure want to destroy the database![y/n/q]:" choice
 	echo "Your choice $choice"
@@ -339,6 +358,9 @@ interactive_mode(){
 			a)
 				add_record
 				;;
+			f)
+				find_record
+				;;
 			stex)
 				start_exam_helper
 				;;
@@ -400,6 +422,9 @@ do
 			;;
 		-sptop | --stop-topper)
 			stop_finding_topper_helper
+			;;
+		-f | --find-record)
+			find_record
 			;;
 		*)
 			echo "$0: inavlid option -- '$1'"
