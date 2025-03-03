@@ -7,6 +7,10 @@ logfile=${parent_dir}logfile
 
 sleep_time=2
 
+if [ -n $1 ];then
+    sleep_time=$1
+fi
+
 trap cleanup EXIT
 
 fetch_lock(){

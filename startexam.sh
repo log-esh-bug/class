@@ -8,6 +8,10 @@ temp=${parent_dir}temp
 
 sleep_time=1
 
+if [ -n $1 ];then
+    sleep_time=$1
+fi
+
 trap cleanup EXIT
 
 if [ ! -e $db ];then   

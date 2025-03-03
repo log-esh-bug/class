@@ -1,15 +1,16 @@
-#!/bin/bash 
+#!/bin/bash
+trap cleanup EXIT
 parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
 markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
 id=
 
-exam_freq=5
-topper_finding_freq=10
-trap cleanup EXIT
+exam_freq=1
+topper_finding_freq=2
 
-#Initializing database if there is nothing!
+
+#Initializing database id if there is nothing!
 if [ ! -e $db ];then 
 	id=1000
 fi
@@ -37,6 +38,7 @@ display_help(){
 			-i (or) --interactive	Interactive mode
 			-a (or) --add		Add Record to Database[$db]
 			-r (or) --remove	To remove student From Database[$db]
+			-f (or) --find-record	To Find student From Database[$db]
 			-p (or) --printdb	Print the Database
 			-d (or) --destroy	To Destroy the Database[$db]
 			-h (or) --help		Display help
@@ -53,6 +55,7 @@ display_help_interactive(){
 		Help------------------------------------
 		a 	Add Record to Database[$db]
 		r	To remove student From Database[$db]
+		f	To Find student From Database[$db]
 		p 	Print the Database
 		d 	To Destroy the Database[$db]
 		h 	Display help
@@ -197,8 +200,20 @@ find_record(){
 	case $choice in
 		n|name)
 			read -p "Enter the name: " name
-			line=$(fetch_details n $name)
-			print_record_by_line $line
+			fetch_lock $db
+			matches=$(cat $db | cut --fields=2 | grep -n --word-regexp "$name")
+			if [ -z "$matches" ]; then
+				drop_lock $db
+				echo "Match not found!"
+				return
+			fi
+			drop_lock $db
+			echo -e "Matches Found\nId\tName\tAge\tContact"
+			for i in $matches
+			do
+				line=$(echo $i|cut -f 1 -d ":")
+				sed -n ${line}p $db
+			done
 			;;
 		i|id)
 			read -p "Enter the id: " id
@@ -269,7 +284,7 @@ start_exam_helper(){
 		fi
 	fi
 	echo "Exam Started and will happen for every $exam_freq!"
-	${parent_dir}startexam.sh &
+	${parent_dir}startexam.sh $exam_freq&
 	echo "$!" > startexam.pid
 
 	drop_lock startexam.pid
@@ -308,7 +323,7 @@ start_finding_topper_helper(){
 	fi
 
 	echo "Finding topper process started and will happen for every $topper_finding_freq!"
-	${parent_dir}findtopper.sh &
+	${parent_dir}findtopper.sh $topper_finding_freq&
 	echo "$!" > findtopper.pid
 
 	drop_lock findtopper.pid
