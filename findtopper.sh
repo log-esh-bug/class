@@ -11,8 +11,6 @@ if [ -n $1 ];then
     sleep_time=$1
 fi
 
-trap cleanup EXIT
-
 fetch_lock(){
 	while [ -e ${1}.lock ];
 	do
@@ -27,6 +25,11 @@ drop_lock(){
 		rm ${1}.lock
 	fi
 }
+
+cleanup(){
+	drop_lock $markdb
+}
+trap cleanup EXIT
 
 if [ ! -e $markdb ];then   
     echo "Database[$markdb] not exists! Quitting..."
@@ -45,8 +48,3 @@ do
     find_topper_helper
     sleep $sleep_time
 done
-
-
-cleanup(){
-	drop_lock $markdb
-}

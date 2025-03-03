@@ -4,8 +4,6 @@ parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
 id=
 
-trap cleanup EXIT
-
 # echo "$db"
 
 if [ ! -e $db ];then 
@@ -27,6 +25,10 @@ drop_lock(){
 	fi
 }
 
+cleanup(){
+	drop_lock $db
+}
+trap cleanup EXIT
 
 add_record(){
 	
@@ -60,7 +62,3 @@ do
 	add_record
 	read -p "Want to continue?[y/n]" choice
 done
-
-cleanup(){
-	drop_lock $db
-}

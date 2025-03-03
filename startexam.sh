@@ -12,8 +12,6 @@ if [ -n $1 ];then
     sleep_time=$1
 fi
 
-trap cleanup EXIT
-
 if [ ! -e $db ];then   
         echo "Database[$db] not exists! Quitting..."
 fi
@@ -36,6 +34,12 @@ drop_lock(){
 		rm ${1}.lock
 	fi
 }
+cleanup(){
+    drop_lock $db
+    drop_lock $markdb
+    drop_lock $temp
+}
+trap cleanup EXIT
 
 update_marks(){    
     
@@ -69,8 +73,3 @@ do
     sleep $sleep_time
 done
 
-cleanup(){
-    drop_lock $db
-    drop_lock $markdb
-    drop_lock $temp
-}

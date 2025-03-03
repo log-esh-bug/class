@@ -4,8 +4,6 @@ db=${parent_dir}base
 markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
 
-trap cleanup EXIT
-
 fetch_lock(){
 	while [ -e ${1}.lock ];
 	do
@@ -20,6 +18,11 @@ drop_lock(){
 		rm ${1}.lock
 	fi
 }
+
+cleanup(){
+    drop_lock $db
+}
+trap cleanup EXIT
 
 
 #Usage fetch_details [Option] [Value]
@@ -54,7 +57,3 @@ print_record_by_line(){
 
 print_record_by_line $(fetch_details n "logesh")
 # fetch_details n kamal
-
-cleanup(){
-    drop_lock $db
-}

@@ -18,7 +18,9 @@ drop_lock(){
 		rm ${1}.lock
 	fi
 }
-
+cleanup(){
+    drop_lock $db
+}
 trap cleanup EXIT
 
 remove_record_by_name(){
@@ -114,8 +116,4 @@ fetch_details(){
 }
 
 remove_record_by_name
-
-cleanup(){
-    drop_lock $db
-}
 

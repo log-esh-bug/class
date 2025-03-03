@@ -1,5 +1,4 @@
-#!/bin/bash
-trap cleanup EXIT
+#!/bin/bash 
 parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
 markdb=${parent_dir}Marksbase
@@ -31,6 +30,15 @@ drop_lock(){
 		rm ${1}.lock
 	fi
 }
+cleanup(){
+	# echo "Cleanup called"
+	drop_lock $db
+	drop_lock $markdb
+	drop_lock $topbase
+	drop_lock startexam.pid	
+	drop_lock findtopper.pid
+}
+trap cleanup EXIT
 
 display_help(){
 	cat <<- _eof_
@@ -448,11 +456,3 @@ do
 	esac
 	shift
 done
-
-cleanup(){
-	drop_lock $db
-	drop_lock $markdb
-	drop_lock $topbase
-	drop_lock startexam.pid	
-	drop_lock findtopper.pid
-}
