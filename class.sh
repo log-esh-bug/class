@@ -5,8 +5,8 @@ markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
 id=
 
-exam_freq=1
-topper_finding_freq=2
+exam_freq=5
+topper_finding_freq=10
 
 #Initializing database if there is nothing!
 if [ ! -e $db ];then 
@@ -163,7 +163,8 @@ start_exam_helper(){
 }
 
 stop_exam_helper(){
-	kill -9 $(ps -ef | grep startexam | awk 'NR==1,NR==1 {print $2}')
+	# kill -9 $(ps -ef | grep startexam | awk 'NR==1,NR==1{print $2}')
+	kill -9 $(pgrep startexam)
 	echo "Exam Stopped!"
 }
 
@@ -173,7 +174,8 @@ start_finding_topper_helper(){
 }
 
 stop_finding_topper_helper(){
-	kill -9 $(ps -ef | grep findtopper | awk 'NR==1,NR==1{print $2}')
+	# kill -9 $(ps -ef | grep findtopper | awk 'NR==1,NR==1{print $2}')
+	kill -9 $(pgrep findtopper)
 	echo "Finding topper process Stopped!"
 }
 
