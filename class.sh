@@ -193,7 +193,7 @@ remove_record_by_name(){
 }
 
 find_record(){
-	read -p "FInd by Name/Id[n/i]" choice
+	read -p "Find by Name/Id[n/i]" choice
 	case $choice in
 		n|name)
 			read -p "Enter the name: " name
