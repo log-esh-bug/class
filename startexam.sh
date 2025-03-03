@@ -5,6 +5,8 @@ db=${parent_dir}base
 markdb=${parent_dir}Marksbase
 logfile=${parent_dir}logfile
 
+sleep_time=5
+
 if [ ! -e $db ];then   
         echo "Database[$db] not exists! Quitting..."
 fi
@@ -79,6 +81,6 @@ update_marks(){
 while((1))
 do
     update_marks
-    sleep 3
+    sleep $sleep_time
     # echo "updating every 3 sec!"
 done

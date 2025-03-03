@@ -5,6 +5,8 @@ markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
 logfile=${parent_dir}logfile
 
+sleep_time=10
+
 fetch_lock_markdb(){
 	while [ -e ${markdb}.lock ];
 	do
@@ -35,5 +37,5 @@ find_topper_helper(){
 while((1))
 do
     find_topper_helper
-    sleep 5
+    sleep $sleep_time
 done
