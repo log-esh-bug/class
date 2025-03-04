@@ -1,31 +1,34 @@
-2025-03-04 13:10:43 IST [findtopper.sh 104335] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
-2025-03-04 13:10:45 IST [findtopper.sh 104335] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
-2025-03-04 13:10:47 IST [findtopper.sh 104335] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
-2025-03-04 13:10:49 IST [findtopper.sh 104335] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
-2025-03-04 13:14:54 IST [startexam.sh 104696] LOG: /home/logesh-pt7689/script/class/startexam.sh: Sleep time set to 1
-2025-03-04 13:15:43 IST [startexam.sh 106575] LOG: /home/logesh-pt7689/script/class/startexam.sh: Sleep time set to 1
-2025-03-04 13:15:43 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:44 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:45 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:46 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:48 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:49 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:50 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:51 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:52 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:53 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:54 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:55 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:56 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:57 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:58 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:15:59 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:16:00 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:16:01 IST [startexam.sh 106575] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
-2025-03-04 13:20:45 IST [startbackup.sh 108299] LOG: ./startbackup.sh : Backup sleep time is set to 10
-2025-03-04 13:20:45 IST [startbackup.sh 108299] LOG: Starting backup
-2025-03-04 13:20:45 IST [startbackup.sh 108299] LOG: Backup completed
-2025-03-04 13:20:55 IST [startbackup.sh 108299] LOG: Starting backup
-2025-03-04 13:20:55 IST [startbackup.sh 108299] LOG: Backup completed
-2025-03-04 13:21:05 IST [startbackup.sh 108299] LOG: Starting backup
-2025-03-04 13:21:05 IST [startbackup.sh 108299] LOG: Backup completed
+2025-03-04 16:23:00 IST [startbackup.sh 142552] LOG: No backup directory found.Created one at /home/logesh-pt7689/script/class/backup_dir
+2025-03-04 16:23:00 IST [startbackup.sh 142552] LOG: Starting backup
+2025-03-04 16:23:49 IST [startbackup.sh 142705] LOG: Starting backup
+2025-03-04 16:24:24 IST [startbackup.sh 142905] LOG: Starting backup
+2025-03-04 16:25:08 IST [startbackup.sh 142998] LOG: Starting backup
+2025-03-04 16:25:17 IST [startbackup.sh 143065] LOG: Starting backup
+2025-03-04 16:25:17 IST [startbackup.sh 143065] LOG: Backup completed
+2025-03-04 16:29:07 IST [startbackup.sh 143321] LOG: No backup directory found.Created one at /home/logesh-pt7689/script/class/backup_dir
+2025-03-04 16:29:07 IST [startbackup.sh 143321] LOG: Starting backup
+2025-03-04 16:29:07 IST [startbackup.sh 143321] LOG: Backup completed
+2025-03-04 16:29:12 IST [startbackup.sh 143321] LOG: Starting backup
+2025-03-04 16:29:13 IST [startbackup.sh 143321] LOG: Backup completed
+2025-03-04 16:29:18 IST [startbackup.sh 143321] LOG: Starting backup
+2025-03-04 16:29:18 IST [startbackup.sh 143321] LOG: Backup completed
+2025-03-04 16:29:23 IST [startbackup.sh 143321] LOG: Starting backup
+2025-03-04 16:29:23 IST [startbackup.sh 143321] LOG: Backup completed
+2025-03-04 16:36:08 IST [startbackup.sh 143919] LOG: No backup directory found.Created one at /home/logesh-pt7689/script/class/backup_dir
+2025-03-04 16:36:08 IST [startbackup.sh 143919] LOG: Starting backup
+2025-03-04 16:36:08 IST [startbackup.sh 143919] LOG: Backup completed
+2025-03-04 16:36:13 IST [startbackup.sh 143919] LOG: Starting backup
+2025-03-04 16:36:13 IST [startbackup.sh 143919] LOG: Backup completed
+2025-03-04 16:36:19 IST [startbackup.sh 143919] LOG: Starting backup
+2025-03-04 16:36:19 IST [startbackup.sh 143919] LOG: Backup completed
+2025-03-04 16:37:43 IST [startbackup.sh 144201] LOG: Done backup
+2025-03-04 16:37:48 IST [startbackup.sh 144201] LOG: Done backup
+2025-03-04 16:37:53 IST [startbackup.sh 144201] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir
+2025-03-04 16:37:53 IST [startbackup.sh 144201] LOG: Deleting oldest backup
+2025-03-04 16:37:53 IST [startbackup.sh 144201] LOG: Done backup
+2025-03-04 16:37:58 IST [startbackup.sh 144201] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir
+2025-03-04 16:37:58 IST [startbackup.sh 144201] LOG: Deleting oldest backup
+2025-03-04 16:37:58 IST [startbackup.sh 144201] LOG: Done backup
+2025-03-04 16:38:03 IST [startbackup.sh 144201] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir
+2025-03-04 16:38:03 IST [startbackup.sh 144201] LOG: Deleting oldest backup
+2025-03-04 16:38:03 IST [startbackup.sh 144201] LOG: Done backup
