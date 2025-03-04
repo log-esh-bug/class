@@ -12,3 +12,12 @@
 2025-03-04 18:49:27 IST [findtopper.sh 184362] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/data/toppers
 2025-03-04 18:49:29 IST [findtopper.sh 184362] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/data/toppers
 2025-03-04 18:49:31 IST [findtopper.sh 184362] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/data/toppers
+2025-03-04 18:50:54 IST [startbackup.sh 185257] LOG: startbackup.sh says Backup sleep time is set to 10
+2025-03-04 18:50:54 IST [startbackup.sh 185257] LOG: Done backup
+2025-03-04 18:51:04 IST [startbackup.sh 185257] LOG: Done backup
+2025-03-04 18:51:14 IST [startbackup.sh 185257] LOG: Done backup
+2025-03-04 18:51:24 IST [startbackup.sh 185257] LOG: Done backup
+2025-03-04 18:53:46 IST [startbackup.sh 185788] LOG: startbackup.sh says Backup sleep time is set to 10
+2025-03-04 18:53:46 IST [startbackup.sh 185788] LOG: Done backup
+2025-03-04 18:53:56 IST [startbackup.sh 185788] LOG: Done backup
+2025-03-04 18:54:06 IST [startbackup.sh 185788] LOG: Done backup

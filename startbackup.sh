@@ -38,7 +38,7 @@ start_backup_helper(){
     fetch_lock ${topbase}
 
     current_dir=$(pwd)
-    cd $parent_dir
+    cd ${parent_dir}/data
     tar --create --file ${backup_dir}/base_$(date +%Y%m%d%H%M%S).tar.gz $(basename $db) $(basename $markdb) $(basename $topbase)
     cd $current_dir
 
@@ -61,7 +61,7 @@ if [ ! -d $backup_dir ];then
     fi
 fi
 
-while((1))
+while ((1))
 do
     backups_found=$(ls -l $backup_dir | wc -l)
     if(($backups_found > $backup_threshold));then
