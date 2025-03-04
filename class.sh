@@ -39,11 +39,6 @@ topper_finding_freq=2
 # stop_finding_topper_helper: Stop the topper finding
 # interactive_mode: Interactive mode
 
-#Initializing database id if there is nothing!
-if [ ! -e $db ];then 
-	id=1000
-fi
-
 #Usage: fetch_lock dbname
 fetch_lock(){
 	# echo "$1 lock created"
@@ -86,7 +81,6 @@ display_help(){
 			-sptop (or) --stop-topper	Stop Topper Finding
 	_eof_
 }
-
 
 display_help_interactive(){
 	cat <<- _eof_
@@ -440,6 +434,11 @@ interactive_mode(){
 ############################################################################################################
 # Main Script
 ############################################################################################################
+
+#Initializing database id if there is nothing!
+if [ ! -e $db ];then 
+	id=1000
+fi
 
 if [ $# -eq 0 ];then
 	display_help
