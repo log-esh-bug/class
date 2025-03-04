@@ -56,6 +56,7 @@ drop_lock(){
 		rm ${1}.lock
 	fi
 }
+
 cleanup(){
 	# echo "Cleanup called"
 	drop_lock $db

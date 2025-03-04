@@ -205,3 +205,4 @@
 2025-03-04 18:04:29 IST [findtopper.sh 161911] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
 2025-03-04 18:04:34 IST [startbackup.sh 161937] LOG: startbackup.sh says Backup sleep time is set to 10
 2025-03-04 18:04:34 IST [startbackup.sh 161937] LOG: Done backup
+2025-03-04 18:12:19 IST [sl_lock.sh 162647] LOG: Lock directory Not found.Created one!
