@@ -232,7 +232,7 @@ remove_record_by_name(){
         sed -n ${line}p $db
     done
 
-    read -p "Enter the Id of the student record you want to delete(XXX format) : " d_id
+    read -p "Enter the Id of the student record you want to delete(XXXX format) : " d_id
     drop_lock $db
 
     d_line=$(fetch_details i $d_id)
