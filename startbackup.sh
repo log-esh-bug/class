@@ -67,7 +67,7 @@ do
     backups_found=$(ls -l $backup_dir | wc -l)
     if(($backups_found > $backup_threshold));then
 
-        $log_script "More than $backup_threshold backups found in $backup_dir.Deleting oldest backup"
+        # $log_script "More than $backup_threshold backups found in $backup_dir.Deleting oldest backup"
 
         oldest_backup=$(ls -t $backup_dir | tail -1)
         rm $backup_dir/$oldest_backup

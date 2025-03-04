@@ -14,10 +14,11 @@ parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
 markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
-id=
 
+id=
 exam_freq=1
 topper_finding_freq=2
+backup_frequency=10
 
 #######################################################
 # Script Functions
@@ -62,6 +63,7 @@ cleanup(){
 	drop_lock $topbase
 	drop_lock startexam.pid	
 	drop_lock findtopper.pid
+	drop_lock startbackup.pid
 }
 trap cleanup EXIT
 
@@ -79,6 +81,8 @@ display_help(){
 			-spex (or) --stop-exam	Stop Exam
 			-sttop (or) --start-topper	Start Topper Finding
 			-sptop (or) --stop-topper	Stop Topper Finding
+			-stbp (or) --start-backup	Start Backup
+			-spbp (or) --stop-backup	Stop Backup
 	_eof_
 }
 
@@ -96,6 +100,8 @@ display_help_interactive(){
 		spex	Stop Exam
 		sttop	Start Topper Finding
 		sptop	Stop Topper Finding
+		stbp	Start Backup
+		spbp	Stop Backup
 		----------------------------------------
 	_eof_
 }
@@ -382,6 +388,43 @@ stop_finding_topper_helper(){
 	echo "Find topper process not found. First start one!"
 }
 
+start_backup_helper(){
+	fetch_lock startbackup.pid
+
+	if [ -e startbackup.pid ];then
+		local pid=$(cat startbackup.pid)
+	    if [[ $(ps -p $pid --format comm=) == "startbackup.sh" ]];then
+			echo "Backup already started!"
+			drop_lock startbackup.pid
+			return
+		fi
+	fi
+	echo "Backup Started and will happen for every $backup_frequency!"
+	${parent_dir}startbackup.sh $backup_frequency&
+	echo "$!" > startbackup.pid
+
+	drop_lock startbackup.pid
+}
+
+stop_backup_helper(){
+	fetch_lock startbackup.pid
+
+	if [ -e startbackup.pid ];then
+		local pid=$(cat startbackup.pid) 
+		if [[ $(ps -p $pid --format comm=) == "startbackup.sh" ]];then
+			kill -9 $pid
+			rm startbackup.pid
+			echo "Backup Stopped!"
+			drop_lock startbackup.pid
+			return
+		else
+			rm startbackup.pid
+			echo "startbackup.pid file contains corrupted pid!"
+		fi
+	fi
+	drop_lock startbackup.pid
+	echo "Backup not started already. First start one!"
+}
 
 interactive_mode(){
 	local choice=
@@ -419,6 +462,12 @@ interactive_mode(){
 				;;
 			sptop)
 				stop_finding_topper_helper
+				;;
+			stbp)
+				start_backup_helper
+				;;
+			spbp)
+				stop_backup_helper
 				;;
 			q)
 				exit 0
@@ -480,6 +529,12 @@ do
 			;;
 		-f | --find-record)
 			find_record
+			;;
+		-stbp | --start-backup)
+			start_backup_helper
+			;;
+		-spbp | --stop-backup)
+			stop_backup_helper
 			;;
 		*)
 			echo "$0: inavlid option -- '$1'"

@@ -32,3 +32,25 @@
 2025-03-04 16:38:03 IST [startbackup.sh 144201] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir
 2025-03-04 16:38:03 IST [startbackup.sh 144201] LOG: Deleting oldest backup
 2025-03-04 16:38:03 IST [startbackup.sh 144201] LOG: Done backup
+2025-03-04 17:37:45 IST [startbackup.sh 149355] LOG: startbackup.sh says Backup sleep time is set to 10
+2025-03-04 17:37:45 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:37:45 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:37:55 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:37:55 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:38:05 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:38:05 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:38:15 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:38:15 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:38:25 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:38:25 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:38:35 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:38:35 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:38:45 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:38:45 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:38:55 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:38:55 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:39:05 IST [startbackup.sh 149355] LOG: More than 5 backups found in /home/logesh-pt7689/script/class/backup_dir.Deleting oldest backup
+2025-03-04 17:39:05 IST [startbackup.sh 149355] LOG: Done backup
+2025-03-04 17:39:46 IST [startbackup.sh 149922] LOG: startbackup.sh says Backup sleep time is set to 10
+2025-03-04 17:39:46 IST [startbackup.sh 149922] LOG: Done backup
+2025-03-04 17:39:56 IST [startbackup.sh 149922] LOG: Done backup
