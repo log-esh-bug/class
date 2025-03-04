@@ -3,19 +3,11 @@ parent_dir=/home/logesh-pt7689/script/class/
 
 db=${parent_dir}base
 markdb=${parent_dir}Marksbase
-logfile=${parent_dir}logfile
 temp=${parent_dir}temp
 
+log_script=${parent_dir}dolog.sh
+
 sleep_time=1
-
-if [ -n $1 ];then
-    echo "$(date) --> startexam: Sleep time set to $1" >> logfile
-    sleep_time=$1
-fi
-
-if [ ! -e $db ];then   
-        echo "Database[$db] not exists! Quitting..."
-fi
 
 rand(){
     echo $((RANDOM%30+70))
@@ -65,8 +57,17 @@ update_marks(){
     mv $temp $markdb
     drop_lock $markdb
 
-    echo "$(date) --> Marks generated and inserted to $markdb" >> $logfile
+    $log_script "Marks generated and inserted to $markdb"
+
 }
+if [ -n $1 ];then
+    $log_script "$(basename $0) says sleep time set to $1"
+    sleep_time=$1
+fi
+
+if [ ! -e $db ];then   
+    $log_script "Database[$db] not exists! Quitting..."
+fi
 
 while((1))
 do

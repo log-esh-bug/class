@@ -3,14 +3,11 @@ parent_dir=/home/logesh-pt7689/script/class/
 
 markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
-logfile=${parent_dir}logfile
+log_script=${parent_dir}dolog.sh
+
+# echo "$log_script"
 
 sleep_time=2
-
-if [ -n $1 ];then
-	echo "$(date) --> findtopper: Sleep time set to $1" >> logfile
-    sleep_time=$1
-fi
 
 fetch_lock(){
 	while [ -e ${1}.lock ];
@@ -32,17 +29,22 @@ cleanup(){
 }
 trap cleanup EXIT
 
-if [ ! -e $markdb ];then   
-    echo "Database[$markdb] not exists! Quitting..."
-fi
-
 find_topper_helper(){
     fetch_lock $markdb
     sort -k 6nr $markdb | awk 'NR==1,NR==3 {print}' > $topbase
     drop_lock $markdb
 
-    echo "$(date) --> Toppers calculated and inserted to $topbase" >> $logfile
+    $log_script "Toppers calculated and inserted to $topbase"
 }
+
+if [ -n $1 ];then
+	$log_script "$(basename $0) says Sleep time set to $1"
+    sleep_time=$1
+fi
+
+if [ ! -e $markdb ];then   
+    $log_script "Database[$markdb] not exists! Quitting..."
+fi
 
 while((1))
 do
