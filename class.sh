@@ -11,9 +11,11 @@
 # topper_finding_frequency: Topper finding frequency
 
 parent_dir=/home/logesh-pt7689/script/class/
-db=${parent_dir}base
-markdb=${parent_dir}Marksbase
-topbase=${parent_dir}toppers
+db=${parent_dir}data/base
+markdb=${parent_dir}data/Marksbase
+topbase=${parent_dir}data/toppers
+log_script=${parent_dir}dolog.sh
+lock_dir=${parent_dir}locks/
 
 id=
 exam_frequency=1
@@ -41,19 +43,34 @@ backup_frequency=10
 # interactive_mode: Interactive mode
 
 #Usage: fetch_lock dbname
+# fetch_lock(){
+# 	# echo "$1 lock created"
+# 	while [ -e ${1}.lock ];
+# 	do
+# 		echo "waiting!"
+# 		sleep 1		
+# 	done
+# 	touch ${1}.lock
+# }
+# #usage drop_lock dbname
+# drop_lock(){
+# 	if [ -e ${1}.lock ];then
+# 		rm ${1}.lock
+# 	fi
+# }
+
 fetch_lock(){
-	# echo "$1 lock created"
-	while [ -e ${1}.lock ];
+	while [ -e ${lock_dir}$(basename $1).lock ];
 	do
-		echo "waiting!"
+		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${1}.lock
+	touch ${lock_dir}$(basename $1).lock 
 }
-#usage drop_lock dbname
+
 drop_lock(){
-	if [ -e ${1}.lock ];then
-		rm ${1}.lock
+	if [ -e ${lock_dir}$(basename $1).lock  ];then
+		rm ${lock_dir}$(basename $1).lock 
 	fi
 }
 
@@ -383,7 +400,7 @@ interactive_mode(){
 	do
 		case $choice in
 			r)
-				remove_record
+				remove_record_by_name
 				;;
 			d)
 				empty_database

@@ -1,23 +1,23 @@
 #!/bin/bash 
 parent_dir=/home/logesh-pt7689/script/class/
-db=${parent_dir}base
+db=${parent_dir}data/base
+lock_dir=${parent_dir}locks/
 
-#Usage: fetch_lock dbname
 fetch_lock(){
-	# echo "$1 lock created"
-	while [ -e ${1}.lock ];
+	while [ -e ${lock_dir}$(basename $1).lock ];
 	do
-		echo "waiting!"
+		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${1}.lock
+	touch ${lock_dir}$(basename $1).lock 
 }
-#usage drop_lock dbname
+
 drop_lock(){
-	if [ -e ${1}.lock ];then
-		rm ${1}.lock
+	if [ -e ${lock_dir}$(basename $1).lock  ];then
+		rm ${lock_dir}$(basename $1).lock 
 	fi
 }
+
 cleanup(){
     drop_lock $db
 }

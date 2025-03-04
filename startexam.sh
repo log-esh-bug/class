@@ -1,30 +1,30 @@
-#!/bin/bash 
+#!/bin/bash
 parent_dir=/home/logesh-pt7689/script/class/
-
-db=${parent_dir}base
-markdb=${parent_dir}Marksbase
+db=${parent_dir}data/base
+markdb=${parent_dir}data/Marksbase
+topbase=${parent_dir}data/toppers
+log_script=${parent_dir}dolog.sh
+lock_dir=${parent_dir}locks/
 temp=${parent_dir}temp
 
-log_script=${parent_dir}dolog.sh
-
-sleep_time=1
+sleep_time=3
 
 rand(){
     echo $((RANDOM%30+70))
 }
 
 fetch_lock(){
-	while [ -e ${1}.lock ];
+	while [ -e ${lock_dir}$(basename $1).lock ];
 	do
-		echo "waiting!"
+		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${1}.lock
+	touch ${lock_dir}$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${1}.lock ];then
-		rm ${1}.lock
+	if [ -e ${lock_dir}$(basename $1).lock  ];then
+		rm ${lock_dir}$(basename $1).lock 
 	fi
 }
 cleanup(){
@@ -60,7 +60,8 @@ update_marks(){
     $log_script "Marks generated and inserted to $markdb"
 
 }
-if [ -n $1 ];then
+
+if [ -n "$1" ];then
     $log_script "$(basename $0) says sleep time set to $1"
     sleep_time=$1
 fi

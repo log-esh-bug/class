@@ -1,21 +1,23 @@
 #!/bin/bash 
 parent_dir=/home/logesh-pt7689/script/class/
-db=${parent_dir}base
-markdb=${parent_dir}Marksbase
-topbase=${parent_dir}toppers
+db=${parent_dir}data/base
+markdb=${parent_dir}data/Marksbase
+topbase=${parent_dir}data/toppers
+log_script=${parent_dir}dolog.sh
+lock_dir=${parent_dir}locks/
 
 fetch_lock(){
-	while [ -e ${1}.lock ];
+	while [ -e ${lock_dir}$(basename $1).lock ];
 	do
-		echo "waiting!"
+		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${1}.lock
+	touch ${lock_dir}$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${1}.lock ];then
-		rm ${1}.lock
+	if [ -e ${lock_dir}$(basename $1).lock  ];then
+		rm ${lock_dir}$(basename $1).lock 
 	fi
 }
 

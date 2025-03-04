@@ -1,26 +1,27 @@
 #!/bin/bash
 parent_dir=/home/logesh-pt7689/script/class/
-
-markdb=${parent_dir}Marksbase
-topbase=${parent_dir}toppers
+db=${parent_dir}data/base
+markdb=${parent_dir}data/Marksbase
+topbase=${parent_dir}data/toppers
 log_script=${parent_dir}dolog.sh
+lock_dir=${parent_dir}locks/
 
 # echo "$log_script"
 
 sleep_time=2
 
 fetch_lock(){
-	while [ -e ${1}.lock ];
+	while [ -e ${lock_dir}$(basename $1).lock ];
 	do
-		echo "waiting!"
+		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${1}.lock
+	touch ${lock_dir}$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${1}.lock ];then
-		rm ${1}.lock
+	if [ -e ${lock_dir}$(basename $1).lock  ];then
+		rm ${lock_dir}$(basename $1).lock 
 	fi
 }
 
@@ -37,7 +38,7 @@ find_topper_helper(){
     $log_script "Toppers calculated and inserted to $topbase"
 }
 
-if [ -n $1 ];then
+if [ -n "$1" ];then
 	$log_script "$(basename $0) says Sleep time set to $1"
     sleep_time=$1
 fi

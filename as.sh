@@ -1,7 +1,8 @@
 #!/bin/bash
 
 parent_dir=/home/logesh-pt7689/script/class/
-db=${parent_dir}base
+lock_dir=${parent_dir}locks/
+db=${parent_dir}data/base
 id=
 
 # echo "$db"
@@ -11,17 +12,17 @@ if [ ! -e $db ];then
 fi
 
 fetch_lock(){
-	while [ -e ${1}.lock ];
+	while [ -e ${lock_dir}$(basename $1).lock ];
 	do
-		echo "waiting!"
+		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${1}.lock
+	touch ${lock_dir}$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${1}.lock ];then
-		rm ${1}.lock
+	if [ -e ${lock_dir}$(basename $1).lock  ];then
+		rm ${lock_dir}$(basename $1).lock 
 	fi
 }
 

@@ -1,10 +1,9 @@
 #!/bin/bash
-parent_dir=/home/logesh-pt7689/script/class/
-log_script=${parent_dir}dolog.sh
-lock_dir=${parent_dir}locks/
+# parent_dir=/home/logesh-pt7689/script/class/
+# log_script=${parent_dir}dolog.sh
+# lock_dir=${parent_dir}locks/
 
 fetch_lock(){
-
 	while [ -e ${lock_dir}${1}.lock ];
 	do
 		# echo "waiting!"
@@ -28,6 +27,6 @@ if [ ! -d $lock_dir ];then
 	fi
 fi
 
-fetch_lock logesh
-sleep 10
-drop_lock logesh
+# fetch_lock logesh
+# sleep 10
+# drop_lock logesh
