@@ -41,23 +41,8 @@ backup_frequency=10
 # start_finding_topper_helper: Start the topper finding
 # stop_finding_topper_helper: Stop the topper finding
 # interactive_mode: Interactive mode
-
-#Usage: fetch_lock dbname
-# fetch_lock(){
-# 	# echo "$1 lock created"
-# 	while [ -e ${1}.lock ];
-# 	do
-# 		echo "waiting!"
-# 		sleep 1		
-# 	done
-# 	touch ${1}.lock
-# }
-# #usage drop_lock dbname
-# drop_lock(){
-# 	if [ -e ${1}.lock ];then
-# 		rm ${1}.lock
-# 	fi
-# }
+# start_backend_helper: Start the backend helper
+# stop_backend_helper: Stop the backend helper
 
 fetch_lock(){
 	while [ -e ${lock_dir}$(basename $1).lock ];
