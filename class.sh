@@ -1,4 +1,15 @@
 #!/bin/bash 
+
+#######################################################
+# Script Variables
+# parent_dir: Parent directory of the script
+# db: Database file path
+# markdb: Marks Database file path
+# topbase: Toppers Database file path
+# id: Student id
+# exam_freq: Exam frequency	
+# topper_finding_freq: Topper finding frequency
+
 parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
 markdb=${parent_dir}Marksbase
@@ -8,6 +19,25 @@ id=
 exam_freq=1
 topper_finding_freq=2
 
+#######################################################
+# Script Functions
+# fetch_lock: Lock the file	
+# drop_lock: Drop the lock
+# cleanup: Cleanup the lock
+# display_help: Display help
+# display_help_interactive: Display help for interactive mode
+# fetch_details: Fetch the details of the student
+# print_record_by_line: Print the record by line number
+# add_record: Add record to the database
+# remove_record_by_name: Remove record by name
+# find_record: Find record by name/id
+# empty_database: Empty the database
+# print_db: Print the database
+# start_exam_helper: Start the exam
+# stop_exam_helper: Stop the exam
+# start_finding_topper_helper: Start the topper finding
+# stop_finding_topper_helper: Stop the topper finding
+# interactive_mode: Interactive mode
 
 #Initializing database id if there is nothing!
 if [ ! -e $db ];then 
@@ -204,7 +234,7 @@ remove_record_by_name(){
 }
 
 find_record(){
-	read -p "Find by Name/Id[n/i]" choice
+	read -p "Find by Name/Id[n/i] : " choice
 	case $choice in
 		n|name)
 			read -p "Enter the name: " name
@@ -385,7 +415,7 @@ interactive_mode(){
 				find_record
 				;;
 			stex)
-				start_exam_helper
+				start_exam_helper 
 				;;
 			spex)
 				stop_exam_helper
@@ -407,6 +437,9 @@ interactive_mode(){
 		read -p "Enter the choice	: " choice
 	done
 }
+############################################################################################################
+# Main Script
+############################################################################################################
 
 if [ $# -eq 0 ];then
 	display_help

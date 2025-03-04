@@ -8,6 +8,7 @@ logfile=${parent_dir}logfile
 sleep_time=2
 
 if [ -n $1 ];then
+	echo "$(date) --> findtopper: Sleep time set to $1" >> logfile
     sleep_time=$1
 fi
 

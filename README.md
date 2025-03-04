@@ -8,7 +8,7 @@ Calling this will prompt you to recurrently add the student details untill you p
 -> It will ask for the user name , if the name is    not availabe it will throughs an error and exists.
 -> If the db contains multipla names of the same record it will ask for the id.
 ## startexam.sh
-Routines to conduct examination(i.e to find random marks between 40 to 100) and insert the mark for record found in base and add them to Marksbase.
+Routines to conduct examination(i.e to find random marks between 40 to 100) and insert the mark for record found in base and add them to Marksbase.     
 -> Will recurrently do this untill killed by another process with an interval mentioned as sleep_time.
 ## findtopper.sh
 Routines to find toppers based on the marks available from Marksbase.sh.
