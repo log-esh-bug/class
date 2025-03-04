@@ -7,8 +7,8 @@
 # markdb: Marks Database file path
 # topbase: Toppers Database file path
 # id: Student id
-# exam_freq: Exam frequency	
-# topper_finding_freq: Topper finding frequency
+# exam_frequency: Exam frequency	
+# topper_finding_frequency: Topper finding frequency
 
 parent_dir=/home/logesh-pt7689/script/class/
 db=${parent_dir}base
@@ -16,8 +16,8 @@ markdb=${parent_dir}Marksbase
 topbase=${parent_dir}toppers
 
 id=
-exam_freq=1
-topper_finding_freq=2
+exam_frequency=1
+topper_finding_frequency=2
 backup_frequency=10
 
 #######################################################
@@ -309,121 +309,69 @@ print_db(){
 	done
 }
 
-start_exam_helper(){
 
-	fetch_lock startexam.pid
+#usage: start_backend_helper backend_name frequency
+start_backend_helper(){
+	fetch_lock ${1}.pid
 
-	if [ -e startexam.pid ];then
-		local pid=$(cat startexam.pid)
-	    if [[ $(ps -p $pid --format comm=) == "startexam.sh" ]];then
-			echo "Exam already started!"
-			drop_lock startexam.pid
+	if [ -e ${1}.pid ];then
+		local pid=$(cat ${1}.pid)
+	    if [[ $(ps -p $pid --format comm=) == "${1}.sh" ]];then
+			echo "${1} already started!"
+			drop_lock ${1}.pid
 			return
 		fi
 	fi
-	echo "Exam Started and will happen for every $exam_freq!"
-	${parent_dir}startexam.sh $exam_freq&
-	echo "$!" > startexam.pid
+	echo "${1} Started and will happen for every $2!"
+	${parent_dir}${1}.sh ${2}&
+	echo "$!" > ${1}.pid
 
-	drop_lock startexam.pid
+	drop_lock ${1}.pid
+}
+
+#usage: stop_backend_helper backend_name
+stop_backend_helper(){
+	fetch_lock ${1}.pid
+
+	if [ -e ${1}.pid ];then
+		local pid=$(cat ${1}.pid) 
+		if [[ $(ps -p $pid --format comm=) == "${1}.sh" ]];then
+			kill -9 $pid
+			rm ${1}.pid
+			echo "${1} Stopped!"
+			drop_lock ${1}.pid
+			return
+		else
+			rm ${1}.pid
+			echo "${1}.pid file contains corrupted pid!"
+		fi
+	fi
+	drop_lock ${1}.pid
+	echo "${1} not started already. First start one!"
+}
+
+start_exam_helper(){
+	start_backend_helper startexam $exam_frequency
 }
 
 stop_exam_helper(){
-	fetch_lock startexam.pid
-
-	if [ -e startexam.pid ];then
-		local pid=$(cat startexam.pid) 
-		if [[ $(ps -p $pid --format comm=) == "startexam.sh" ]];then
-			kill -9 $pid
-			rm startexam.pid
-			echo "Exam Stopped!"
-			drop_lock startexam.pid
-			return
-		else
-			rm startexam.pid
-			echo "startexam.pid file contains corrupted pid!"
-		fi
-	fi
-	drop_lock startexam.pid
-	echo "Exam not started already. First start one!"
+	stop_backend_helper startexam
 }
 
 start_finding_topper_helper(){
-	fetch_lock findtopper.pid
-
-	if [ -e findtopper.pid ];then
-		local pid=$(cat findtopper.pid)
-	    if [[ $(ps -p $pid --format comm=) == "findtopper.sh" ]];then
-			echo "Find topper already started!"
-			drop_lock findtopper.pid
-			return
-		fi
-	fi
-
-	echo "Finding topper process started and will happen for every $topper_finding_freq!"
-	${parent_dir}findtopper.sh $topper_finding_freq&
-	echo "$!" > findtopper.pid
-
-	drop_lock findtopper.pid
+	start_backend_helper findtopper $topper_finding_frequency
 }
 
 stop_finding_topper_helper(){
-	fetch_lock findtopper.pid
-
-	if [ -e findtopper.pid ];then
-		local pid=$(cat findtopper.pid)
-		if [[ $(ps -p $pid --format comm=) == "findtopper.sh" ]];then
-			kill -9 $pid
-			rm findtopper.pid
-			echo "Find topper stopped!"
-
-			drop_lock findtopper.pid
-			return
-		else
-			rm findtopper.pid
-			echo "findtopper.pid file contains corrupted pid!"
-		fi
-	fi
-	drop_lock findtopper.pid
-	echo "Find topper process not found. First start one!"
+	stop_backend_helper findtopper
 }
 
 start_backup_helper(){
-	fetch_lock startbackup.pid
-
-	if [ -e startbackup.pid ];then
-		local pid=$(cat startbackup.pid)
-	    if [[ $(ps -p $pid --format comm=) == "startbackup.sh" ]];then
-			echo "Backup already started!"
-			drop_lock startbackup.pid
-			return
-		fi
-	fi
-	echo "Backup Started and will happen for every $backup_frequency!"
-	${parent_dir}startbackup.sh $backup_frequency&
-	echo "$!" > startbackup.pid
-
-	drop_lock startbackup.pid
+	start_backend_helper startbackup $backup_frequency
 }
 
 stop_backup_helper(){
-	fetch_lock startbackup.pid
-
-	if [ -e startbackup.pid ];then
-		local pid=$(cat startbackup.pid) 
-		if [[ $(ps -p $pid --format comm=) == "startbackup.sh" ]];then
-			kill -9 $pid
-			rm startbackup.pid
-			echo "Backup Stopped!"
-			drop_lock startbackup.pid
-			return
-		else
-			rm startbackup.pid
-			echo "startbackup.pid file contains corrupted pid!"
-		fi
-	fi
-	drop_lock startbackup.pid
-	echo "Backup not started already. First start one!"
+	stop_backend_helper startbackup
 }
 
 interactive_mode(){

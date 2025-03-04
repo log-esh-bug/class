@@ -54,3 +54,154 @@
 2025-03-04 17:39:46 IST [startbackup.sh 149922] LOG: startbackup.sh says Backup sleep time is set to 10
 2025-03-04 17:39:46 IST [startbackup.sh 149922] LOG: Done backup
 2025-03-04 17:39:56 IST [startbackup.sh 149922] LOG: Done backup
+2025-03-04 17:48:34 IST [startexam.sh 150642] LOG: startexam.sh says sleep time set to 1
+2025-03-04 17:48:34 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:35 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:36 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:37 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:38 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:39 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:40 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:42 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:43 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:44 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:45 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:46 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:47 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:48 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:49 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:50 IST [findtopper.sh 152032] LOG: findtopper.sh says Sleep time set to 2
+2025-03-04 17:48:50 IST [findtopper.sh 152032] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:48:50 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:51 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:52 IST [findtopper.sh 152032] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:48:52 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:53 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:54 IST [findtopper.sh 152032] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:48:54 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:55 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:56 IST [findtopper.sh 152032] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:48:56 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:57 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:58 IST [findtopper.sh 152032] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:48:58 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:48:59 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:00 IST [findtopper.sh 152032] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:49:01 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:02 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:02 IST [findtopper.sh 152032] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:49:03 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:04 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:05 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:06 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:07 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:08 IST [startexam.sh 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:49:09 IST [ 150642] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:51:55 IST [startexam.sh 154052] LOG: startexam.sh says sleep time set to 1
+2025-03-04 17:51:55 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:51:56 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:51:57 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:51:58 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:51:59 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:00 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:01 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:02 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:03 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:04 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:05 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:06 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:07 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:08 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:09 IST [findtopper.sh 155373] LOG: findtopper.sh says Sleep time set to 2
+2025-03-04 17:52:09 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:09 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:10 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:11 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:12 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:13 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:13 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:14 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:15 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:15 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:16 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:17 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:17 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:18 IST [startexam.sh 154052] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:52:19 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:21 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:23 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:25 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:27 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:29 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:31 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:34 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:36 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:38 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:40 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:42 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:44 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:46 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:48 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:50 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:52 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:54 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:52:56 IST [findtopper.sh 155373] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 17:53:13 IST [startexam.sh 156574] LOG: startexam.sh says sleep time set to 1
+2025-03-04 17:53:13 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:14 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:15 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:17 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:18 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:19 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:20 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:21 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:22 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:23 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:24 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:25 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:53:26 IST [startexam.sh 156574] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:54:25 IST [startbackup.sh 157899] LOG: startbackup.sh says Backup sleep time is set to 10
+2025-03-04 17:54:25 IST [startbackup.sh 157899] LOG: Done backup
+2025-03-04 17:54:35 IST [startbackup.sh 157899] LOG: Done backup
+2025-03-04 17:54:45 IST [startbackup.sh 157899] LOG: Done backup
+2025-03-04 17:54:55 IST [startbackup.sh 157899] LOG: Done backup
+2025-03-04 17:55:57 IST [startbackup.sh 158211] LOG: startbackup.sh says Backup sleep time is set to 10
+2025-03-04 17:55:57 IST [startbackup.sh 158211] LOG: Done backup
+2025-03-04 17:56:20 IST [startexam.sh 158323] LOG: startexam.sh says sleep time set to 1
+2025-03-04 17:56:20 IST [startexam.sh 158323] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:56:22 IST [startexam.sh 158323] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:56:23 IST [startexam.sh 158323] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:57:14 IST [startexam.sh 158782] LOG: startexam.sh says sleep time set to 1
+2025-03-04 17:57:14 IST [startexam.sh 158782] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:57:15 IST [startexam.sh 158782] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:57:46 IST [startexam.sh 159036] LOG: startexam.sh says sleep time set to 1
+2025-03-04 17:57:46 IST [startexam.sh 159036] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:57:47 IST [startexam.sh 159036] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:57:48 IST [startexam.sh 159036] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:59:07 IST [startexam.sh 159442] LOG: startexam.sh says sleep time set to 1
+2025-03-04 17:59:07 IST [startexam.sh 159442] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 17:59:08 IST [startexam.sh 159442] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:01:27 IST [startexam.sh 160063] LOG: startexam.sh says sleep time set to 1
+2025-03-04 18:01:27 IST [startexam.sh 160063] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:01:28 IST [startexam.sh 160063] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:01:37 IST [startexam.sh 160321] LOG: startexam.sh says sleep time set to 1
+2025-03-04 18:01:37 IST [startexam.sh 160321] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:01:38 IST [startexam.sh 160321] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:08 IST [startexam.sh 160583] LOG: startexam.sh says sleep time set to 1
+2025-03-04 18:02:08 IST [startexam.sh 160583] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:09 IST [startexam.sh 160583] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:22 IST [startexam.sh 160831] LOG: startexam.sh says sleep time set to 1
+2025-03-04 18:02:22 IST [startexam.sh 160831] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:23 IST [startexam.sh 160831] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:24 IST [startexam.sh 160831] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:25 IST [startexam.sh 160831] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:26 IST [startexam.sh 160831] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:27 IST [startexam.sh 160831] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:02:28 IST [startexam.sh 160831] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:04:12 IST [startexam.sh 161692] LOG: startexam.sh says sleep time set to 1
+2025-03-04 18:04:12 IST [startexam.sh 161692] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:04:13 IST [startexam.sh 161692] LOG: Marks generated and inserted to /home/logesh-pt7689/script/class/Marksbase
+2025-03-04 18:04:29 IST [findtopper.sh 161911] LOG: findtopper.sh says Sleep time set to 2
+2025-03-04 18:04:29 IST [findtopper.sh 161911] LOG: Toppers calculated and inserted to /home/logesh-pt7689/script/class/toppers
+2025-03-04 18:04:34 IST [startbackup.sh 161937] LOG: startbackup.sh says Backup sleep time is set to 10
+2025-03-04 18:04:34 IST [startbackup.sh 161937] LOG: Done backup
