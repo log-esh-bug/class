@@ -39,7 +39,7 @@ start_backup_helper(){
 
     current_dir=$(pwd)
     cd ${parent_dir}/data
-    tar --create --file ${backup_dir}/base_$(date +%Y%m%d%H%M%S).tar.gz $(basename $db) $(basename $markdb) $(basename $topbase)
+    tar --create --file ${backup_dir}/base_$(date +%Y%m%d%H%M%S).tar $(basename $db) $(basename $markdb) $(basename $topbase)
     cd $current_dir
 
     drop_lock ${db}
