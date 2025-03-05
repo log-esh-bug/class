@@ -11,11 +11,15 @@
 # topper_finding_frequency: Topper finding frequency
 
 parent_dir=/home/logesh-pt7689/script/class/
+lock_dir=${parent_dir}locks/
+dat_dir=${parent_dir}data/
+
 db=${parent_dir}data/base
 markdb=${parent_dir}data/Marksbase
 topbase=${parent_dir}data/toppers
+
 log_script=${parent_dir}dolog.sh
-lock_dir=${parent_dir}locks/
+
 
 id=
 exam_frequency=1
@@ -443,6 +447,20 @@ fi
 if [ $# -eq 0 ];then
 	display_help
 fi
+
+if [ ! -d $lock_dir ];then
+	mkdir $lock_dir
+fi
+
+if [ ! -d $dat_dir ];then
+	mkdir $dat_dir
+fi
+
+if [ ! -e $log_script ];then
+	echo "Log script not found!"
+	exit 1
+fi
+
 
 while [ $1 ];
 do
