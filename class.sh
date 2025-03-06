@@ -2,7 +2,7 @@
 
 #######################################################
 # Script Variables
-# parent_dir: Parent directory of the script
+# PARENT_DIR: Parent directory of the script
 # db: Database file path
 # markdb: Marks Database file path
 # topbase: Toppers Database file path
@@ -10,15 +10,18 @@
 # exam_frequency: Exam frequency	
 # topper_finding_frequency: Topper finding frequency
 
-parent_dir=/home/logesh-tt0826/class/
-lock_dir=${parent_dir}locks/
-dat_dir=${parent_dir}data/
+PARENT_DIR=
+LOCK_DIR=
+DATA_DIR=
+REMOTE_BACKUP_DIR=
 
-db=${parent_dir}data/base
-markdb=${parent_dir}data/Marksbase
-topbase=${parent_dir}data/toppers
+source properties.sh
 
-log_script=${parent_dir}dolog.sh
+db=${PARENT_DIR}data/base
+markdb=${PARENT_DIR}data/Marksbase
+topbase=${PARENT_DIR}data/toppers
+
+log_script=${PARENT_DIR}dolog.sh
 
 
 id=
@@ -49,17 +52,17 @@ backup_frequency=10
 # stop_backend_helper: Stop the backend helper
 
 fetch_lock(){
-	while [ -e ${lock_dir}$(basename $1).lock ];
+	while [ -e ${LOCK_DIR}$(basename $1).lock ];
 	do
 		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${lock_dir}$(basename $1).lock 
+	touch ${LOCK_DIR}$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${lock_dir}$(basename $1).lock  ];then
-		rm ${lock_dir}$(basename $1).lock 
+	if [ -e ${LOCK_DIR}$(basename $1).lock  ];then
+		rm ${LOCK_DIR}$(basename $1).lock 
 	fi
 }
 
@@ -330,7 +333,7 @@ start_backend_helper(){
 		fi
 	fi
 	echo "${1} Started and will happen for every $2!"
-	${parent_dir}${1}.sh ${2}&
+	${PARENT_DIR}${1}.sh ${2}&
 	echo "$!" > ${1}.pid
 
 	drop_lock ${1}.pid
@@ -448,12 +451,12 @@ if [ $# -eq 0 ];then
 	display_help
 fi
 
-if [ ! -d $lock_dir ];then
-	mkdir $lock_dir
+if [ ! -d $LOCK_DIR ];then
+	mkdir $LOCK_DIR
 fi
 
-if [ ! -d $dat_dir ];then
-	mkdir $dat_dir
+if [ ! -d $DATA_DIR ];then
+	mkdir $DATA_DIR
 fi
 
 if [ ! -e $log_script ];then

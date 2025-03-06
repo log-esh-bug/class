@@ -1,76 +1,73 @@
 #!/bin/bash
-parent_dir=/home/logesh-tt0826/class/
-db=${parent_dir}data/base
-markdb=${parent_dir}data/Marksbase
-topbase=${parent_dir}data/toppers
-log_script=${parent_dir}dolog.sh
-lock_dir=${parent_dir}locks/
-backup_dir=${parent_dir}backup_dir
 
-backup_sleep_time=5
-backup_threshold=5
+source properties.sh
 
 fetch_lock(){
-	while [ -e ${lock_dir}$(basename $1).lock ];
+	while [ -e ${LOCK_DIR}$(basename $1).lock ];
 	do
 		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${lock_dir}$(basename $1).lock 
+	touch ${LOCK_DIR}$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${lock_dir}$(basename $1).lock  ];then
-		rm ${lock_dir}$(basename $1).lock 
+	if [ -e ${LOCK_DIR}$(basename $1).lock  ];then
+		rm ${LOCK_DIR}$(basename $1).lock 
 	fi
 }
 
 cleanup(){
-	drop_lock $db
-	drop_lock $markdb
-	drop_lock $topbase
+	drop_lock $INFO_DB
+	drop_lock $SCORE_DB
+	drop_lock $TOPPER_DB
 }
 trap cleanup EXIT
 
 start_backup_helper(){
-    fetch_lock ${db}
-    fetch_lock ${markdb}
-    fetch_lock ${topbase}
+    fetch_lock ${INFO_DB}
+    fetch_lock ${SCORE_DB}
+    fetch_lock ${TOPPER_DB}
 
     current_dir=$(pwd)
-    cd ${parent_dir}/data
-    tar --create --file ${backup_dir}/base_$(date +%Y%m%d%H%M%S).tar $(basename $db) $(basename $markdb) $(basename $topbase)
+    cd ${PARENT_DIR}/data
+
+    # tar_file_name=$(date +%Y%m%d%H%M%S)
+    # tar --create --file ${backup_dir}/base_${tar_file_name}.tar $(basename $INFO_DB) $(basename $SCORE_DB) $(basename $TOPPER_DB)
+    tar zcvf - ${DATA_DIR} | ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "cat > ${S_REMOTE_BACKUP_DIR}/base-$(date +%Y%m%d%H%M%S).tar.gz"
+
     cd $current_dir
 
-    drop_lock ${db}
-    drop_lock ${markdb}
-    drop_lock ${topbase}
-    $log_script "Done backup"
+    drop_lock ${INFO_DB}
+    drop_lock ${SCORE_DB}
+    drop_lock ${TOPPER_DB}
+    $LOG_SCRIPT "Done backup"
 }
 
 if [ -n "$1" ]; then
-    $log_script "$(basename $0) says Backup sleep time is set to $1"
-    backup_sleep_time=$1
+    $LOG_SCRIPT "$(basename $0) says Backup sleep time is set to $1"
+    BACKUP_SLEEP_TIME=$1
 fi
 
 if [ ! -d $backup_dir ];then
     if [[ $(mkdir $backup_dir)==0 ]];then
-        $log_script "No backup directory found.Created one at $backup_dir"
+        $LOG_SCRIPT "No backup directory found.Created one at $backup_dir"
     else
-        $log_script "Unable to create backup directory at $backup_dir"
+        $LOG_SCRIPT "Unable to create backup directory at $backup_dir"
     fi
 fi
 
 while ((1))
 do
     backups_found=$(ls -l $backup_dir | wc -l)
-    if(($backups_found > $backup_threshold));then
+    if(($backups_found > $BACKUP_THRESHOLD));then
 
-        # $log_script "More than $backup_threshold backups found in $backup_dir.Deleting oldest backup"
+        # $LOG_SCRIPT "More than $BACKUP_THRESHOLD backups found in $backup_dir.Deleting oldest backup"
 
         oldest_backup=$(ls -t $backup_dir | tail -1)
         rm $backup_dir/$oldest_backup
     fi
     start_backup_helper
-    sleep $backup_sleep_time
+
+    sleep $BACKUP_SLEEP_TIME
 done
