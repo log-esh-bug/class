@@ -10,7 +10,7 @@
 # exam_frequency: Exam frequency	
 # topper_finding_frequency: Topper finding frequency
 
-parent_dir=/home/logesh-pt7689/script/class/
+parent_dir=/home/logesh-tt0826/class
 lock_dir=${parent_dir}locks/
 dat_dir=${parent_dir}data/
 
