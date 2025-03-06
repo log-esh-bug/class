@@ -1,5 +1,5 @@
 #!/bin/bash
-parent_dir=/home/logesh-pt7689/script/class/
+parent_dir=/home/logesh-tt0826/class/
 db=${parent_dir}data/base
 markdb=${parent_dir}data/Marksbase
 topbase=${parent_dir}data/toppers

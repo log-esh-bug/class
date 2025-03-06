@@ -1,6 +1,6 @@
 #!/bin/bash
 
-parent_dir=/home/logesh-pt7689/script/class/
+parent_dir=/home/logesh-tt0826/class/
 lock_dir=${parent_dir}locks/
 db=${parent_dir}data/base
 id=
