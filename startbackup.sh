@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 source properties.sh
 
@@ -49,17 +49,17 @@ if [ -n "$1" ]; then
     BACKUP_SLEEP_TIME=$1
 fi
 
-if [ ! -d $backup_dir ];then
-    if [[ $(mkdir $backup_dir)==0 ]];then
-        $LOG_SCRIPT "No backup directory found.Created one at $backup_dir"
+if [ ! -d $REMOTE_BACKUP_DIR ];then
+    if [[ $(ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "mkdir ${S_REMOTE_BACKUP_DIR}")==0 ]];then
+        $LOG_SCRIPT "No backup directory found.Created one at $S_REMOTE_BACKUP_DIR"
     else
-        $LOG_SCRIPT "Unable to create backup directory at $backup_dir"
+        $LOG_SCRIPT "Unable to create backup directory at $S_REMOTE_BACKUP_DIR"
     fi
 fi
 
 while ((1))
 do
-    backups_found=$(ls -l $backup_dir | wc -l)
+    backups_found=$(ls -l $REMOTE_BACKUP_DIR | wc -l)
     if(($backups_found > $BACKUP_THRESHOLD));then
 
         # $LOG_SCRIPT "More than $BACKUP_THRESHOLD backups found in $backup_dir.Deleting oldest backup"
