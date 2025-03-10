@@ -17,11 +17,11 @@ LOG_SCRIPT=${PARENT_DIR}/dolog.sh
 #Frequency values
 EXAM_FREQUENCY=4
 TOPPER_FINDING_FREQUENCY=5
-BACKUP_FREQUENCY=100
+BACKUP_FREQUENCY=5
 
 #Backup related stuffs
 BACKUP_THRESHOLD=5
-S_REMOTE_BACKUP_DIR="/home/test2/backup_class"
+S_REMOTE_BACKUP_DIR="/home/test2/backup_class/backups"
 
 #Remote details
 S_REMOTE_HOST_NAME="zlabs-auto3"

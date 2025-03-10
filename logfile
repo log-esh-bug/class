@@ -193,3 +193,43 @@
 2025-03-10 13:24:19 IST [findtopper.sh 44111] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
 2025-03-10 13:24:21 IST [startexam.sh 43879] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
 2025-03-10 13:24:24 IST [findtopper.sh 44111] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 15:28:52 IST [startbackup.sh 53382] LOG: startbackup.sh says Backup sleep time is set to 100
+2025-03-10 15:28:53 IST [startbackup.sh 53382] LOG: Done backup
+2025-03-10 15:29:20 IST [startbackup.sh 53538] LOG: startbackup.sh says Backup sleep time is set to 5
+2025-03-10 15:29:21 IST [startbackup.sh 53538] LOG: Done backup
+2025-03-10 15:29:27 IST [startbackup.sh 53538] LOG: Done backup
+2025-03-10 15:29:33 IST [startbackup.sh 53538] LOG: Done backup
+2025-03-10 15:29:39 IST [startbackup.sh 53538] LOG: Done backup
+2025-03-10 15:29:45 IST [startbackup.sh 53538] LOG: Done backup
+2025-03-10 15:29:51 IST [startbackup.sh 53538] LOG: Done backup
+2025-03-10 15:29:58 IST [startbackup.sh 53538] LOG: Done backup
+2025-03-10 16:04:37 IST [dobackup.sh 57348] LOG: Done backup
+2025-03-10 16:06:01 IST [dobackup.sh 57471] LOG: Done backup
+2025-03-10 16:08:23 IST [dobackup.sh 57645] LOG: Done backup
+2025-03-10 16:08:32 IST [dobackup.sh 57717] LOG: Done backup
+2025-03-10 16:08:52 IST [dobackup.sh 57779] LOG: Done backup
+2025-03-10 16:08:58 IST [dobackup.sh 57838] LOG: Done backup
+2025-03-10 16:09:04 IST [dobackup.sh 57909] LOG: Done backup
+2025-03-10 16:09:09 IST [dobackup.sh 57984] LOG: Done backup
+2025-03-10 16:09:11 IST [dobackup.sh 58021] LOG: Done backup
+2025-03-10 16:09:50 IST [dobackup.sh 58130] LOG: Done backup
+2025-03-10 16:10:46 IST [dobackup.sh 58246] LOG: Done backup
+2025-03-10 16:11:34 IST [dobackup.sh 58322] LOG: Done backup
+2025-03-10 16:13:15 IST [dobackup.sh 58459] LOG: Done backup
+2025-03-10 16:23:46 IST [dobackup.sh 59266] LOG: Done backup
+2025-03-10 16:25:06 IST [dobackup.sh 59461] LOG: Done backup
+2025-03-10 16:44:52 IST [dobackup.sh 62331] LOG: Done backup
+2025-03-10 16:44:58 IST [dobackup.sh 62457] LOG: Done backup
+2025-03-10 16:45:07 IST [dobackup.sh 62604] LOG: Done backup
+2025-03-10 16:46:09 IST [dobackup.sh 63118] LOG: Done backup
+2025-03-10 16:46:15 IST [dobackup.sh 63250] LOG: Done backup
+2025-03-10 16:46:32 IST [dobackup.sh 63456] LOG: Done backup
+2025-03-10 16:46:37 IST [dobackup.sh 63585] LOG: Done backup
+2025-03-10 16:47:45 IST [dobackup.sh 64125] LOG: Done backup
+2025-03-10 16:47:50 IST [dobackup.sh 64247] LOG: Done backup
+2025-03-10 16:54:31 IST [dobackup.sh 67383] LOG: Done backup
+2025-03-10 16:54:36 IST [dobackup.sh 67500] LOG: Done backup
+2025-03-10 16:55:06 IST [dobackup.sh 67782] LOG: Done backup
+2025-03-10 16:55:11 IST [dobackup.sh 67905] LOG: Done backup
+2025-03-10 16:55:16 IST [dobackup.sh 68031] LOG: Done backup
+2025-03-10 17:35:52 IST [dobackup.sh 86185] LOG: Done backup

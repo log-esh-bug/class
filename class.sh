@@ -42,17 +42,17 @@ id=
 # stop_backend_helper: Stop the backend helper
 
 fetch_lock(){
-	while [ -e ${LOCK_DIR}$(basename $1).lock ];
+	while [ -e ${LOCK_DIR}/$(basename $1).lock ];
 	do
 		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${LOCK_DIR}$(basename $1).lock 
+	touch ${LOCK_DIR}/$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${LOCK_DIR}$(basename $1).lock  ];then
-		rm ${LOCK_DIR}$(basename $1).lock 
+	if [ -e ${LOCK_DIR}/$(basename $1).lock  ];then
+		rm ${LOCK_DIR}/$(basename $1).lock 
 	fi
 }
 

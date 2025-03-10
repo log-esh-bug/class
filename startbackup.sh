@@ -2,20 +2,19 @@
 
 source properties.sh
 
-#Default backup frequency set to 10s
 BACKUP_SLEEP_TIME=10
 
 fetch_lock(){
-	while [ -e ${LOCK_DIR}$(basename $1).lock ];
+	while [ -e ${LOCK_DIR}/$(basename $1).lock ];
 	do
 		sleep 1		
 	done
-	touch ${LOCK_DIR}$(basename $1).lock 
+	touch ${LOCK_DIR}/$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${LOCK_DIR}$(basename $1).lock  ];then
-		rm ${LOCK_DIR}$(basename $1).lock 
+	if [ -e ${LOCK_DIR}/$(basename $1).lock  ];then
+		rm ${LOCK_DIR}/$(basename $1).lock 
 	fi
 }
 
@@ -26,44 +25,45 @@ cleanup(){
 }
 trap cleanup EXIT
 
-start_backup_helper(){
-    fetch_lock ${INFO_DB}
-    fetch_lock ${SCORE_DB}
-    fetch_lock ${TOPPER_DB}
 
-    current_dir=$(pwd)
-    cd ${PARENT_DIR}/data
+#usage: start_backend_helper backend_name frequency
+start_backend_helper(){
+	fetch_lock ${1}.pid
 
-    tar zcf - ${DATA_DIR} | ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "cat > ${S_REMOTE_BACKUP_DIR}/base-$(date +%Y%m%d%H%M%S).tar.gz"
+	if [ -e ${1}.pid ];then
+		local pid=$(cat ${1}.pid)
+	    if [[ $(ps -p $pid --format comm=) == "${1}.sh" ]];then
+			echo "${1} already started!"
+			drop_lock ${1}.pid
+			return
+		fi
+	fi
+	echo "${1} Started and will happen for every $2!"
+	${PARENT_DIR}/${1}.sh ${2}&
+	echo "$!" > ${1}.pid
 
-    cd $current_dir
-
-    drop_lock ${INFO_DB}
-    drop_lock ${SCORE_DB}
-    drop_lock ${TOPPER_DB}
-    $LOG_SCRIPT "Done backup"
+	drop_lock ${1}.pid
 }
 
-if [ -n "$1" ]; then
-    $LOG_SCRIPT "$(basename $0) says Backup sleep time is set to $1"
-    BACKUP_SLEEP_TIME=$1
-fi
+#usage: stop_backend_helper backend_name
+stop_backend_helper(){
+	fetch_lock ${1}.pid
 
-ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "if [ ! -d $S_REMOTE_BACKUP_DIR ];then
-                                            mkdir $S_REMOTE_BACKUP_DIR
-                                        fi"
+	if [ -e ${1}.pid ];then
+		local pid=$(cat ${1}.pid) 
+		if [[ $(ps -p $pid --format comm=) == "${1}.sh" ]];then
+			kill -9 $pid
+			rm ${1}.pid
+			echo "${1} Stopped!"
+			drop_lock ${1}.pid
+			return
+		else
+			rm ${1}.pid
+			echo "${1}.pid file contains corrupted pid!"
+		fi
+	fi
+	drop_lock ${1}.pid
+	echo "${1} not started already. First start one!"
+}
 
-while ((1))
-do
-    backups_found=$(ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "ls ${S_REMOTE_BACKUP_DIR}| wc -l")
-    if(($backups_found >= $BACKUP_THRESHOLD));then
-
-        # $LOG_SCRIPT "More than $BACKUP_THRESHOLD backups found in $backup_dir.Deleting oldest backup"
-
-        oldest_backup=$(ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME}  "ls -t $S_REMOTE_BACKUP_DIR | tail -1")
-        ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "rm ${S_REMOTE_BACKUP_DIR}/${oldest_backup}"
-    fi
-    start_backup_helper
-
-    sleep $BACKUP_SLEEP_TIME
-done
+start_backend_helper backup_shed
