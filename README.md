@@ -1,19 +1,19 @@
 # **Student's School Register - A shell Script**
-## Script files 
-### **_class.sh_**
-It contains main script to add,remove the record from base(A typical database) as well as routines to create,destroy the base.
-### **_as.sh [ Add Student ]_**
-Calling this will prompt you to recurrently add the student details untill you press n(no).
-### **_remove.sh [ Remove a record from the database ]_**
-- It will ask for the user name , if the name is    not availabe it will throughs an error and exists.
+## Script files         
+### class.sh 
+It contains main script to add,remove the record from base(A typical \ database) as well as routines to create,destroy the base.\
+### as.sh [ Add Student ]
+Calling this will prompt you to recurrently add the student details\ untill you press n(no).
+### remove.sh [ Remove a record from the database ]
+- It will ask for the user name , if the name is    not availabe it\ will throughs an error and exists.
 - If the db contains multipla names of the same record it will ask for the id.
-### **_startexam.sh_**
+### startexam.sh
 Routines to conduct examination(i.e to find random marks between 40 to 100) and insert the mark for record found in base and add them to Marksbase.     
 - Will recurrently do this untill killed by another process with an interval mentioned as sleep_time.
-### **_findtopper.sh_**
+### findtopper.sh
 Routines to find toppers based on the marks available from Marksbase.sh.
 - Will recurrently do this untill killed by another process with an interval mentioned as sleep_time.
-### **_backup_**
+### backup
 Routine to copy the files in the current directory to a directory specified.
 - Will do backup only called manually by the user.
 - Will suppress the stdout and sterr by redirecting it to /dev/null.
