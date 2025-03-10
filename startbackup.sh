@@ -1,11 +1,13 @@
-#!/bin/bash -x
+#!/bin/bash
 
 source properties.sh
+
+#Default backup frequency set to 10s
+BACKUP_SLEEP_TIME=10
 
 fetch_lock(){
 	while [ -e ${LOCK_DIR}$(basename $1).lock ];
 	do
-		# echo "waiting!"
 		sleep 1		
 	done
 	touch ${LOCK_DIR}$(basename $1).lock 
@@ -32,9 +34,7 @@ start_backup_helper(){
     current_dir=$(pwd)
     cd ${PARENT_DIR}/data
 
-    # tar_file_name=$(date +%Y%m%d%H%M%S)
-    # tar --create --file ${backup_dir}/base_${tar_file_name}.tar $(basename $INFO_DB) $(basename $SCORE_DB) $(basename $TOPPER_DB)
-    tar zcvf - ${DATA_DIR} | ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "cat > ${S_REMOTE_BACKUP_DIR}/base-$(date +%Y%m%d%H%M%S).tar.gz"
+    tar zcf - ${DATA_DIR} | ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "cat > ${S_REMOTE_BACKUP_DIR}/base-$(date +%Y%m%d%H%M%S).tar.gz"
 
     cd $current_dir
 
@@ -49,23 +49,19 @@ if [ -n "$1" ]; then
     BACKUP_SLEEP_TIME=$1
 fi
 
-if [ ! -d $REMOTE_BACKUP_DIR ];then
-    if [[ $(ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "mkdir ${S_REMOTE_BACKUP_DIR}")==0 ]];then
-        $LOG_SCRIPT "No backup directory found.Created one at $S_REMOTE_BACKUP_DIR"
-    else
-        $LOG_SCRIPT "Unable to create backup directory at $S_REMOTE_BACKUP_DIR"
-    fi
-fi
+ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "if [ ! -d $S_REMOTE_BACKUP_DIR ];then
+                                            mkdir $S_REMOTE_BACKUP_DIR
+                                        fi"
 
 while ((1))
 do
-    backups_found=$(ls -l $REMOTE_BACKUP_DIR | wc -l)
-    if(($backups_found > $BACKUP_THRESHOLD));then
+    backups_found=$(ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "ls ${S_REMOTE_BACKUP_DIR}| wc -l")
+    if(($backups_found >= $BACKUP_THRESHOLD));then
 
         # $LOG_SCRIPT "More than $BACKUP_THRESHOLD backups found in $backup_dir.Deleting oldest backup"
 
-        oldest_backup=$(ls -t $backup_dir | tail -1)
-        rm $backup_dir/$oldest_backup
+        oldest_backup=$(ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME}  "ls -t $S_REMOTE_BACKUP_DIR | tail -1")
+        ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "rm ${S_REMOTE_BACKUP_DIR}/${oldest_backup}"
     fi
     start_backup_helper
 

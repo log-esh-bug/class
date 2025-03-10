@@ -1,24 +1,26 @@
 #!/bin/bash
 
 #Directories
-PARENT_DIR="/home/logesh-tt0826/class/"
-LOCK_DIR="${PARENT_DIR}locks/"
-DATA_DIR="${PARENT_DIR}data/"
+PARENT_DIR="/home/logesh-tt0826/class"
+LOCK_DIR="${PARENT_DIR}/locks"
+DATA_DIR="${PARENT_DIR}/data"
 # BACKUP_DIR="${PARENT_DIR}backup_dir"
 
 #Databases(ASCII File Format)
-INFO_DB=${parent_dir}data/base
-SCORE_DB=${parent_dir}data/Marksbase
-TOPPER_DB=${parent_dir}data/toppers
+INFO_DB=${DATA_DIR}/base
+SCORE_DB=${DATA_DIR}/Marksbase
+TOPPER_DB=${DATA_DIR}/toppers
 
 #Script Files
-LOG_SCRIPT=${parent_dir}dolog.sh
+LOG_SCRIPT=${PARENT_DIR}/dolog.sh
 
-#Consatants
-BACKUP_SLEEP_TIME=5
-BACKUP_THRESHOLD=5
+#Frequency values
+EXAM_FREQUENCY=4
+TOPPER_FINDING_FREQUENCY=5
+BACKUP_FREQUENCY=100
 
 #Backup related stuffs
+BACKUP_THRESHOLD=5
 S_REMOTE_BACKUP_DIR="/home/test2/backup_class"
 
 #Remote details

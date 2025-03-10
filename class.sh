@@ -3,12 +3,12 @@
 #######################################################
 # Script Variables
 # PARENT_DIR: Parent directory of the script
-# db: Database file path
-# markdb: Marks Database file path
-# topbase: Toppers Database file path
+# INFO_DB: Database file path
+# SCORE_DB: Marks Database file path
+# TOPPER_DB: Toppers Database file path
 # id: Student id
-# exam_frequency: Exam frequency	
-# topper_finding_frequency: Topper finding frequency
+# EXAM_FREQUENCY: Exam frequency	
+# TOPPER_FINDING_FREQUENCY: Topper finding frequency
 
 PARENT_DIR=
 LOCK_DIR=
@@ -17,17 +17,7 @@ REMOTE_BACKUP_DIR=
 
 source properties.sh
 
-db=${PARENT_DIR}data/base
-markdb=${PARENT_DIR}data/Marksbase
-topbase=${PARENT_DIR}data/toppers
-
-log_script=${PARENT_DIR}dolog.sh
-
-
 id=
-exam_frequency=1
-topper_finding_frequency=2
-backup_frequency=10
 
 #######################################################
 # Script Functions
@@ -68,9 +58,9 @@ drop_lock(){
 
 cleanup(){
 	# echo "Cleanup called"
-	drop_lock $db
-	drop_lock $markdb
-	drop_lock $topbase
+	drop_lock $INFO_DB
+	drop_lock $SCORE_DB
+	drop_lock $TOPPER_DB
 	drop_lock startexam.pid	
 	drop_lock findtopper.pid
 	drop_lock startbackup.pid
@@ -81,11 +71,11 @@ display_help(){
 	cat <<- _eof_
 		Usage: $0 [Option]
 			-i (or) --interactive	Interactive mode
-			-a (or) --add		Add Record to Database[$db]
-			-r (or) --remove	To remove student From Database[$db]
-			-f (or) --find-record	To Find student From Database[$db]
+			-a (or) --add		Add Record to Database[$INFO_DB]
+			-r (or) --remove	To remove student From Database[$INFO_DB]
+			-f (or) --find-record	To Find student From Database[$INFO_DB]
 			-p (or) --printdb	Print the Database
-			-d (or) --destroy	To Destroy the Database[$db]
+			-d (or) --destroy	To Destroy the Database[$INFO_DB]
 			-h (or) --help		Display help
 			-stex (or) --start-exam	Start Exam
 			-spex (or) --stop-exam	Stop Exam
@@ -99,11 +89,11 @@ display_help(){
 display_help_interactive(){
 	cat <<- _eof_
 		Help------------------------------------
-		a 	Add Record to Database[$db]
-		r	To remove student From Database[$db]
-		f	To Find student From Database[$db]
+		a 	Add Record to Database[$INFO_DB]
+		r	To remove student From Database[$INFO_DB]
+		f	To Find student From Database[$INFO_DB]
 		p 	Print the Database
-		d 	To Destroy the Database[$db]
+		d 	To Destroy the Database[$INFO_DB]
 		h 	Display help
 		q	To quit the program
 		stex	Start Exam
@@ -131,24 +121,24 @@ fetch_details(){
             return
             ;;
     esac
-    fetch_lock $db
-    line=$(cat $db| cut --fields=${field} |grep --line-number $2|cut -f 1 -d ":")
-    drop_lock $db
+    fetch_lock $INFO_DB
+    line=$(cat $INFO_DB| cut --fields=${field} |grep --line-number $2|cut -f 1 -d ":")
+    drop_lock $INFO_DB
     echo $line
 }
 
 # usage: print_record_by_line [line_number]
 print_record_by_line(){
-    echo "Id:" $(sed -n ${1}p $db | cut -f 1)
-    echo "Name:" $(sed -n ${1}p $db | cut -f 2)
-    echo "Age: "$(sed -n ${1}p $db | cut -f 3)
-    echo "Contact: "$(sed -n ${1}p $db | cut -f 4)
+    echo "Id:" $(sed -n ${1}p $INFO_DB | cut -f 1)
+    echo "Name:" $(sed -n ${1}p $INFO_DB | cut -f 2)
+    echo "Age: "$(sed -n ${1}p $INFO_DB | cut -f 3)
+    echo "Contact: "$(sed -n ${1}p $INFO_DB | cut -f 4)
 }
 
 add_record(){
 	
 	if [ -z $id ];then
-		id=$(tail -n 1 ${db} | cut -f 1)
+		id=$(tail -n 1 ${INFO_DB} | cut -f 1)
 		id=$((id+1))
 	fi
 
@@ -160,9 +150,9 @@ add_record(){
 	fi
 	read -p "Enter the contact 	: " contact
 
-	fetch_lock $db
-	printf "%03d\t%s\t%s\t%s\n" "$id" "$name" "$age" "$contact">> $db
-	drop_lock $db
+	fetch_lock $INFO_DB
+	printf "%03d\t%s\t%s\t%s\n" "$id" "$name" "$age" "$contact">> $INFO_DB
+	drop_lock $INFO_DB
 
 	id=$((id+1))
 	
@@ -172,10 +162,10 @@ add_record(){
 
 remove_record_by_name(){
     read -p "Enter the name: " name
-	fetch_lock $db
-    matches=$(cat $db | cut --fields=2 | grep -n --word-regexp "$name")
+	fetch_lock $INFO_DB
+    matches=$(cat $INFO_DB | cut --fields=2 | grep -n --word-regexp "$name")
     if [ -z "$matches" ]; then
-        drop_lock $db
+        drop_lock $INFO_DB
         echo "Match not found!"
         return
     fi
@@ -183,22 +173,22 @@ remove_record_by_name(){
     echo "Matches found: $ct "
 
     if ((ct == 0)); then
-        drop_lock $db
+        drop_lock $INFO_DB
         echo "Match not found!"
         return
     fi
 
     if ((ct == 1)); then
-        drop_lock $db
+        drop_lock $INFO_DB
         echo "Record to be deleted:"
         line=$(fetch_details n $name)
-        sed -n ${line}p $db
+        sed -n ${line}p $INFO_DB
         read -p "Do you want to continue?[y/n]:" ch
         case $ch in
             y|Y)
-                fetch_lock $db
-                sed -i "/${name}/d" "$db"
-                drop_lock $db
+                fetch_lock $INFO_DB
+                sed -i "/${name}/d" "$INFO_DB"
+                drop_lock $INFO_DB
                 echo "$name record deleted successfully"
                 ;;
             n|N)
@@ -211,9 +201,9 @@ remove_record_by_name(){
     read -p "Multiple matches found with $name! Do you want to delete all? [y/n] " ch
 
     if [[ $ch == y ]]; then
-        sed -i "/${name}/d" "$db"
+        sed -i "/${name}/d" "$INFO_DB"
         echo "All records with $name have been deleted."
-        drop_lock $db
+        drop_lock $INFO_DB
         return
     fi
 
@@ -221,11 +211,11 @@ remove_record_by_name(){
     for i in $matches
     do
         line=$(echo $i|cut -f 1 -d ":")
-        sed -n ${line}p $db
+        sed -n ${line}p $INFO_DB
     done
 
     read -p "Enter the Id of the student record you want to delete(XXXX format) : " d_id
-    drop_lock $db
+    drop_lock $INFO_DB
 
     d_line=$(fetch_details i $d_id)
 
@@ -234,10 +224,10 @@ remove_record_by_name(){
         return
     fi
     
-    fetch_lock $db
-    # sed -i "${d_line}d" "$db"
-	sed -i "${d_line}d" "$db"
-    drop_lock $db
+    fetch_lock $INFO_DB
+    # sed -i "${d_line}d" "$INFO_DB"
+	sed -i "${d_line}d" "$INFO_DB"
+    drop_lock $INFO_DB
 
 	echo "$name with $d_id deleted successfully!"
     
@@ -248,19 +238,19 @@ find_record(){
 	case $choice in
 		n|name)
 			read -p "Enter the name: " name
-			fetch_lock $db
-			matches=$(cat $db | cut --fields=2 | grep -n --word-regexp "$name")
+			fetch_lock $INFO_DB
+			matches=$(cat $INFO_DB | cut --fields=2 | grep -n --word-regexp "$name")
 			if [ -z "$matches" ]; then
-				drop_lock $db
+				drop_lock $INFO_DB
 				echo "Match not found!"
 				return
 			fi
-			drop_lock $db
+			drop_lock $INFO_DB
 			echo -e "Matches Found\nId\tName\tAge\tContact"
 			for i in $matches
 			do
 				line=$(echo $i|cut -f 1 -d ":")
-				sed -n ${line}p $db
+				sed -n ${line}p $INFO_DB
 			done
 			;;
 		i|id)
@@ -279,8 +269,8 @@ empty_database(){
 	echo "Your choice $choice"
 	case $choice in
 		y | Y)
-			rm $db
-			echo "$db(DataBase) destroyed successfully!"
+			rm $INFO_DB
+			echo "$INFO_DB(DataBase) destroyed successfully!"
 			;;
 		q | Q)
 			echo "Program Terminated successfully!"
@@ -292,24 +282,24 @@ empty_database(){
 }
 
 print_db(){
-	read -p "Enter the database to print [db/markdb/topbase](space separated choices):" choice
+	read -p "Enter the database to print [INFO_DB/SCORE_DB/TOPPER_DB](space separated choices):" choice
 	for i in $choice
 	do
 		case $i in
-			db)
-				fetch_lock $db
-				cat $db
-				drop_lock $db
+			INFO_DB)
+				fetch_lock $INFO_DB
+				cat $INFO_DB
+				drop_lock $INFO_DB
 				;;
-			markdb)
-				fetch_lock $markdb
-				cat $markdb
-				drop_lock $markdb
+			SCORE_DB)
+				fetch_lock $SCORE_DB
+				cat $SCORE_DB
+				drop_lock $SCORE_DB
 				;;
-			topbase)
-				fetch_lock $topbase
-				cat $topbase
-				drop_lock $topbase
+			TOPPER_DB)
+				fetch_lock $TOPPER_DB
+				cat $TOPPER_DB
+				drop_lock $TOPPER_DB
 				;;
 			*)
 				echo "Invalid choice!"
@@ -333,7 +323,7 @@ start_backend_helper(){
 		fi
 	fi
 	echo "${1} Started and will happen for every $2!"
-	${PARENT_DIR}${1}.sh ${2}&
+	${PARENT_DIR}/${1}.sh ${2}&
 	echo "$!" > ${1}.pid
 
 	drop_lock ${1}.pid
@@ -361,7 +351,7 @@ stop_backend_helper(){
 }
 
 start_exam_helper(){
-	start_backend_helper startexam $exam_frequency
+	start_backend_helper startexam $EXAM_FREQUENCY
 }
 
 stop_exam_helper(){
@@ -369,7 +359,7 @@ stop_exam_helper(){
 }
 
 start_finding_topper_helper(){
-	start_backend_helper findtopper $topper_finding_frequency
+	start_backend_helper findtopper $TOPPER_FINDING_FREQUENCY
 }
 
 stop_finding_topper_helper(){
@@ -377,7 +367,7 @@ stop_finding_topper_helper(){
 }
 
 start_backup_helper(){
-	start_backend_helper startbackup $backup_frequency
+	start_backend_helper startbackup $BACKUP_FREQUENCY
 }
 
 stop_backup_helper(){
@@ -443,7 +433,7 @@ interactive_mode(){
 ############################################################################################################
 
 #Initializing database id if there is nothing!
-if [ ! -e $db ];then 
+if [ ! -e $INFO_DB ];then 
 	id=1000
 fi
 
@@ -459,7 +449,7 @@ if [ ! -d $DATA_DIR ];then
 	mkdir $DATA_DIR
 fi
 
-if [ ! -e $log_script ];then
+if [ ! -e $LOG_SCRIPT ];then
 	echo "Log script not found!"
 	exit 1
 fi
