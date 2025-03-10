@@ -367,11 +367,11 @@ stop_finding_topper_helper(){
 }
 
 start_backup_helper(){
-	start_backend_helper startbackup $BACKUP_FREQUENCY
+	ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "$S_REMOTE_BACKUP_SERVER_SCRIPT start_bp"
 }
 
 stop_backup_helper(){
-	stop_backend_helper startbackup
+	ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "$S_REMOTE_BACKUP_SERVER_SCRIPT stop_bp"
 }
 
 interactive_mode(){

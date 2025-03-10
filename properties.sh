@@ -4,7 +4,6 @@
 PARENT_DIR="/home/logesh-tt0826/class"
 LOCK_DIR="${PARENT_DIR}/locks"
 DATA_DIR="${PARENT_DIR}/data"
-# BACKUP_DIR="${PARENT_DIR}backup_dir"
 
 #Databases(ASCII File Format)
 INFO_DB=${DATA_DIR}/base
@@ -21,7 +20,9 @@ BACKUP_FREQUENCY=5
 
 #Backup related stuffs
 BACKUP_THRESHOLD=5
-S_REMOTE_BACKUP_DIR="/home/test2/backup_class/backups"
+S_REMOTE_BACKUP_HOME_DIR="/home/test2/backup_class"
+S_REMOTE_BACKUP_DIR="${S_REMOTE_BACKUP_HOME_DIR}/backups"
+S_REMOTE_BACKUP_SERVER_SCRIPT="${S_REMOTE_BACKUP_HOME_DIR}/bp_server.sh"
 
 #Remote details
 S_REMOTE_HOST_NAME="zlabs-auto3"
