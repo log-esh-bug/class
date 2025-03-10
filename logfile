@@ -156,3 +156,40 @@
 2025-03-10 11:25:57 IST [ 31773] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
 2025-03-10 11:26:01 IST [findtopper.sh 31901] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
 2025-03-10 11:26:06 IST [findtopper.sh 31901] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:03 IST [findtopper.sh 42169] LOG: findtopper.sh says Sleep time set to 5
+2025-03-10 13:19:03 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:08 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:13 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:16 IST [startexam.sh 42279] LOG: startexam.sh says sleep time set to 4
+2025-03-10 13:19:16 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:18 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:21 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:24 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:25 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:29 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:29 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:33 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:34 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:37 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:39 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:41 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:44 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:45 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:49 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:50 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:54 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:19:54 IST [findtopper.sh 42169] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:19:58 IST [startexam.sh 42279] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:24:04 IST [startexam.sh 43879] LOG: startexam.sh says sleep time set to 4
+2025-03-10 13:24:04 IST [startexam.sh 43879] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:24:09 IST [startexam.sh 43879] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:24:09 IST [findtopper.sh 44111] LOG: findtopper.sh says Sleep time set to 5
+2025-03-10 13:24:09 IST [findtopper.sh 44111] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:24:12 IST [startbackup.sh 44156] LOG: startbackup.sh says Backup sleep time is set to 100
+2025-03-10 13:24:13 IST [startexam.sh 43879] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:24:14 IST [startbackup.sh 44156] LOG: Done backup
+2025-03-10 13:24:14 IST [findtopper.sh 44111] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:24:17 IST [startexam.sh 43879] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:24:19 IST [findtopper.sh 44111] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers
+2025-03-10 13:24:21 IST [startexam.sh 43879] LOG: Marks generated and inserted to /home/logesh-tt0826/class/data/Marksbase
+2025-03-10 13:24:24 IST [findtopper.sh 44111] LOG: Toppers calculated and inserted to /home/logesh-tt0826/class/data/toppers

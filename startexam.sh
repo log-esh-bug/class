@@ -1,11 +1,7 @@
 #!/bin/bash
-parent_dir=/home/logesh-tt0826/class/
-db=${parent_dir}data/base
-markdb=${parent_dir}data/Marksbase
-topbase=${parent_dir}data/toppers
-log_script=${parent_dir}dolog.sh
-lock_dir=${parent_dir}locks/
-temp=${parent_dir}temp
+source properties.sh
+
+temp=${PARENT_DIR}/temp
 
 sleep_time=3
 
@@ -14,31 +10,31 @@ rand(){
 }
 
 fetch_lock(){
-	while [ -e ${lock_dir}$(basename $1).lock ];
+	while [ -e ${LOCK_DIR}$(basename $1).lock ];
 	do
 		# echo "waiting!"
 		sleep 1		
 	done
-	touch ${lock_dir}$(basename $1).lock 
+	touch ${LOCK_DIR}$(basename $1).lock 
 }
 
 drop_lock(){
-	if [ -e ${lock_dir}$(basename $1).lock  ];then
-		rm ${lock_dir}$(basename $1).lock 
+	if [ -e ${LOCK_DIR}$(basename $1).lock  ];then
+		rm ${LOCK_DIR}$(basename $1).lock 
 	fi
 }
 cleanup(){
-    drop_lock $db
-    drop_lock $markdb
+    drop_lock $INFO_DB
+    drop_lock $SCORE_DB
     drop_lock $temp
 }
 trap cleanup EXIT
 
 update_marks(){    
     
-    fetch_lock $db
-    ids=$(cat $db | cut -f 1 | awk '{print}')
-    drop_lock $db
+    fetch_lock $INFO_DB
+    ids=$(cat $INFO_DB | cut -f 1 | awk '{print}')
+    drop_lock $INFO_DB
 
     
     for i in $ids
@@ -52,22 +48,22 @@ update_marks(){
     done
     
 
-    # join -t$'\t' -j 1 $db $temp | cut -f 1,2,5,6,7,8,9 > t1
-    fetch_lock $markdb
-    mv $temp $markdb
-    drop_lock $markdb
+    # join -t$'\t' -j 1 $INFO_DB $temp | cut -f 1,2,5,6,7,8,9 > t1
+    fetch_lock $SCORE_DB
+    mv $temp $SCORE_DB
+    drop_lock $SCORE_DB
 
-    $log_script "Marks generated and inserted to $markdb"
+    $LOG_SCRIPT "Marks generated and inserted to $SCORE_DB"
 
 }
 
 if [ -n "$1" ];then
-    $log_script "$(basename $0) says sleep time set to $1"
+    $LOG_SCRIPT "$(basename $0) says sleep time set to $1"
     sleep_time=$1
 fi
 
-if [ ! -e $db ];then   
-    $log_script "Database[$db] not exists! Quitting..."
+if [ ! -e $INFO_DB ];then   
+    $LOG_SCRIPT "Database[$INFO_DB] not exists! Quitting..."
 fi
 
 while((1))

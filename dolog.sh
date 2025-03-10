@@ -2,11 +2,11 @@
 
 ##usage: ./dolog.sh "Comments to log"
 
-parent_dir=/home/logesh-tt0826/class/
-log_file=${parent_dir}logfile
+PARENT_DIR=/home/logesh-tt0826/class
+LOG_FILE=${PARENT_DIR}/logfile
 
 log(){
-    echo "$(date +%F' '%T' '%Z) [$(ps -p $PPID --format comm=) $PPID] LOG: $1" >> $log_file
+    echo "$(date +%F' '%T' '%Z) [$(ps -p $PPID --format comm=) $PPID] LOG: $1" >> $LOG_FILE
 }
 
 if [ -z "$1" ]; then
