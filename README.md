@@ -1,5 +1,5 @@
-# <strong>Student's School Register - A shell Script</strong>
-# Script files
+# Student's School Register - A shell Script
+## Script files
 ### class.sh 
 It contains main script to add,remove the record from base(A typical database) as well as routines to create,destroy the base.
 ### as.sh [ Add Student ]
@@ -17,7 +17,7 @@ Routines to find toppers based on the marks available from Marksbase.sh.
 Routine to copy the files in the current directory to a directory specified.
 -> Will do backup only called manually by the user.
 -> Will suppress the stdout and sterr by redirecting it to /dev/null.
-# Databases(Text files)
+## Databases(Text files)
 ### base
 A typical database to store student records in the format.
 
