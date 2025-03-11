@@ -36,7 +36,8 @@ A typical database to store student's id,name with there obtained marks in the f
 ### `toppers`
 A db to store the top scorers from Marksbase.Usually limited to 3 toppers.
 ### `Logfile`
-A logfile which id getting updated for every time the startexam.sh wakes up and update the database, as well as during changes made by findtopper.sh. 
+A logfile which id getting updated for every time the startexam.sh 
+wakes up and update the database, as well as during changes made by findtopper.sh. 
 
 ### Links!
 [**Github**][mygit]\

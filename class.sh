@@ -21,8 +21,6 @@ id=
 
 #######################################################
 # Script Functions
-# fetch_lock: Lock the file	
-# drop_lock: Drop the lock
 # cleanup: Cleanup the lock
 # display_help: Display help
 # display_help_interactive: Display help for interactive mode
