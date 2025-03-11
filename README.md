@@ -38,7 +38,7 @@ A db to store the top scorers from Marksbase.Usually limited to 3 toppers.
 ### `Logfile`
 A logfile which id getting updated for every time the startexam.sh wakes up and update the database, as well as during changes made by findtopper.sh. 
 
-# `Contact`
+### Links!
 [**Github**][mygit]\
 [**Backup class**][backup_class]
 
