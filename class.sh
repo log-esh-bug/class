@@ -46,6 +46,7 @@ fetch_lock(){
 	do
 		sleep 1		
 	done
+	touch ${LOCK_DIR}/$(basename $1).lock 
 }
 
 drop_lock(){
@@ -307,6 +308,7 @@ print_db(){
 	done
 }
 
+#usage: start_backend_helper backend_name args
 start_backend_helper(){
 	fetch_lock ${1}.pid
 
