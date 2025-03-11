@@ -26,7 +26,7 @@ A typical database to store student records in the format.
 ### `Marksbase`
 A typical database to store student's id,name with there obtained marks in the format,
 
-        id Name S1 S2 S3 S4 Total
+        id S1 S2 S3 S4 Total
         where,
             S1 -  Subject 1 Marks
             S2 -  Subject 2 Marks
@@ -39,6 +39,8 @@ A db to store the top scorers from Marksbase.Usually limited to 3 toppers.
 A logfile which id getting updated for every time the startexam.sh wakes up and update the database, as well as during changes made by findtopper.sh. 
 
 # `Contact`
-[Github][mygit]
+[**Github**][mygit]\
+[**Backup class**][backup_class]
 
 [mygit]:https://github.com/log-esh-bug "Github link to access my repos"
+[backup_class]:https://github.com/log-esh-bug/backup_class "Repositary for backup class"
