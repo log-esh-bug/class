@@ -9,20 +9,6 @@ rand(){
     echo $((RANDOM%30+70))
 }
 
-fetch_lock(){
-	while [ -e ${LOCK_DIR}$(basename $1).lock ];
-	do
-		# echo "waiting!"
-		sleep 1		
-	done
-	touch ${LOCK_DIR}$(basename $1).lock 
-}
-
-drop_lock(){
-	if [ -e ${LOCK_DIR}$(basename $1).lock  ];then
-		rm ${LOCK_DIR}$(basename $1).lock 
-	fi
-}
 cleanup(){
     drop_lock $INFO_DB
     drop_lock $SCORE_DB

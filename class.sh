@@ -41,20 +41,6 @@ id=
 # start_backend_helper: Start the backend helper
 # stop_backend_helper: Stop the backend helper
 
-fetch_lock(){
-	while [ -e ${LOCK_DIR}/$(basename $1).lock ];
-	do
-		sleep 1		
-	done
-	touch ${LOCK_DIR}/$(basename $1).lock 
-}
-
-drop_lock(){
-	if [ -e ${LOCK_DIR}/$(basename $1).lock  ];then
-		rm ${LOCK_DIR}/$(basename $1).lock 
-	fi
-}
-
 cleanup(){
 	# echo "Cleanup called"
 	drop_lock $INFO_DB

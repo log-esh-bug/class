@@ -10,6 +10,9 @@ INFO_DB=${DATA_DIR}/base
 SCORE_DB=${DATA_DIR}/Marksbase
 TOPPER_DB=${DATA_DIR}/toppers
 
+#Logfile
+LOG_FILE=${PARENT_DIR}/logfile
+
 #Script Files
 LOG_SCRIPT=${PARENT_DIR}/dolog.sh
 
@@ -30,3 +33,20 @@ S_REMOTE_HOST_NAME="zlabs-auto3"
 #Credentials S_ ->ssh
 S_USERNAME=test2
 
+
+#LOCK_ROUTINES
+
+
+fetch_lock(){
+	while [ -e ${LOCK_DIR}/$(basename $1).lock ];
+	do
+		sleep 1		
+	done
+	touch ${LOCK_DIR}/$(basename $1).lock 
+}
+
+drop_lock(){
+	if [ -e ${LOCK_DIR}/$(basename $1).lock  ];then
+		rm ${LOCK_DIR}/$(basename $1).lock 
+	fi
+}

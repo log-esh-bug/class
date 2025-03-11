@@ -4,20 +4,6 @@ source properties.sh
 
 BACKUP_SLEEP_TIME=10
 
-fetch_lock(){
-	while [ -e ${LOCK_DIR}/$(basename $1).lock ];
-	do
-		sleep 1		
-	done
-	touch ${LOCK_DIR}/$(basename $1).lock 
-}
-
-drop_lock(){
-	if [ -e ${LOCK_DIR}/$(basename $1).lock  ];then
-		rm ${LOCK_DIR}/$(basename $1).lock 
-	fi
-}
-
 cleanup(){
 	drop_lock $INFO_DB
 	drop_lock $SCORE_DB

@@ -3,20 +3,6 @@ PARENT_DIR="/home/logesh-tt0826/class"
 
 source ${PARENT_DIR}/properties.sh
 
-fetch_lock(){
-	while [ -e ${LOCK_DIR}/$(basename $1).lock ];
-	do
-		sleep 1		
-	done
-	touch ${LOCK_DIR}/$(basename $1).lock 
-}
-
-drop_lock(){
-	if [ -e ${LOCK_DIR}/$(basename $1).lock  ];then
-		rm ${LOCK_DIR}/$(basename $1).lock 
-	fi
-}
-
 cleanup(){
 	drop_lock $INFO_DB
 	drop_lock $SCORE_DB
