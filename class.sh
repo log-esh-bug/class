@@ -366,7 +366,7 @@ stop_finding_topper_helper(){
 }
 
 start_backup_helper(){
-	ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "$S_REMOTE_BACKUP_SERVER_SCRIPT start_bp"
+	ssh ${S_USERNAME}@${S_REMOTE_HOST_NAME} "$S_REMOTE_BACKUP_SERVER_SCRIPT start_bp"&
 }
 
 stop_backup_helper(){
