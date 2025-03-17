@@ -43,5 +43,8 @@ wakes up and update the database, as well as during changes made by findtopper.s
 [**Github**][mygit]\
 [**Backup class**][backup_class]
 
+[**Implementation of the same using postgresql**][pgsql_class]
+
 [mygit]:https://github.com/log-esh-bug "Github link to access my repos"
 [backup_class]:https://github.com/log-esh-bug/backup_class "Repositary for backup class"
+[pgsql_class]:https://github.com/log-esh-bug/sql_class "Repositary for postgresql class"
